@@ -1,0 +1,4 @@
+﻿  SceneDemo.cpp
+c:\users\le quoc thang\source\repos\myframework\myframework\scenedemo.cpp(26): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\le quoc thang\source\repos\myframework\myframework\scenedemo.cpp(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  MyFramework.vcxproj -> C:\Users\Le Quoc Thang\source\repos\MyFramework\Debug\MyFramework.exe
