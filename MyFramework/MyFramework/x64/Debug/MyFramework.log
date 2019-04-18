@@ -1,0 +1,95 @@
+﻿  Animation.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  Camera.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\ninja.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\ninja.h(48): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\camera.cpp(44): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\camera.cpp(47): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\camera.cpp(62): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Debug.cpp
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\debug.cpp(11): error C2664: 'void OutputDebugStringA(LPCSTR)': cannot convert argument 1 from 'wchar_t [4096]' to 'LPCSTR'
+  c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\debug.cpp(11): note: Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+  Game.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\ninja.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\ninja.h(48): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\game.cpp(10): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\game.cpp(47): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\game.cpp(83): warning C4312: 'type cast': conversion from 'LONG' to 'HINSTANCE' of greater size
+  main.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\main.cpp(55): error C2440: '=': cannot convert from 'const wchar_t [17]' to 'LPCSTR'
+  c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\main.cpp(55): note: Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\main.cpp(59): error C2664: 'HWND CreateWindowExA(DWORD,LPCSTR,LPCSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)': cannot convert argument 2 from 'const wchar_t [17]' to 'LPCSTR'
+  c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\main.cpp(70): note: Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+  Ninja.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\ninja.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\ninja.h(48): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\ninja.cpp(79): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\ninja.cpp(81): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\ninja.cpp(105): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\ninja.cpp(106): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\ninja.cpp(151): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\ninja.cpp(156): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  NinjaFallingState.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\ninja.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\ninja.h(48): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  NinjaIdlingState.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\ninja.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\ninja.h(48): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  NinjaJumpingState.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\ninja.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\ninja.h(48): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  NinjaRunningState.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\ninja.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\ninja.h(48): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  NinjaSittingState.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\ninja.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\ninja.h(48): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  Object.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\object.cpp(23): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\object.cpp(24): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\object.cpp(25): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\object.cpp(26): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\object.cpp(84): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\object.cpp(89): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\object.cpp(94): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\object.cpp(99): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  SceneDemo.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\ninja.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\ninja.h(48): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\scenedemo.cpp(25): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\scenedemo.cpp(26): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\scenedemo.cpp(49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\scenedemo.cpp(52): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\scenedemo.cpp(57): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\scenedemo.cpp(65): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\scenedemo.cpp(66): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\scenedemo.cpp(91): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  TiledMap.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\ninja.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\ninja.h(48): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\tiledmap.cpp(19): warning C4552: '*': operator has no effect; expected operator with side-effect
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\tiledmap.cpp(43): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\tiledmap.cpp(42): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\tiledmap.cpp(54): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\tiledmap.cpp(58): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\tiledmap.cpp(59): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\tiledmap.cpp(145): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\tiledmap.cpp(163): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\tiledmap.cpp(164): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\tiledmap.cpp(194): error C2664: 'int MessageBoxA(HWND,LPCSTR,LPCSTR,UINT)': cannot convert argument 2 from 'const wchar_t [6]' to 'LPCSTR'
+  c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\tiledmap.cpp(194): note: Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\tiledmap.cpp(200): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\tiledmap.cpp(229): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...

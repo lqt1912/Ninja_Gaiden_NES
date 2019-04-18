@@ -3,8 +3,8 @@
 HINSTANCE GameGlobal::hInstance = NULL;
 HWND GameGlobal::hWnd = NULL;
 LPD3DXSPRITE GameGlobal::spriteHandler = NULL;
-int GameGlobal::screenheight = 640;
-int GameGlobal::screenwidth = 960;
+int GameGlobal::screenheight =208;
+int GameGlobal::screenwidth = 250;
 LPDIRECT3DDEVICE9 GameGlobal::d3ddv = nullptr;
 bool GameGlobal::isRunning = true;
 IDirect3DSurface9* GameGlobal::backSurface = nullptr;

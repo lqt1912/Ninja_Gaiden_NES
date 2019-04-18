@@ -1,6 +1,11 @@
-#pragma once
+#ifndef __SPRITE__
+#define __SPRITE__
+#include <d3d9.h>
+#include <d3dx9.h>
+
 #include "GameGlobal.h"
-class Sprite 	
+
+class Sprite
 {
 public:
 	Sprite(const char* filePath, RECT sourceRect = RECT(), int width = NULL, int height = NULL, D3DCOLOR colorKey = NULL);
@@ -40,7 +45,7 @@ public:
 	void SetRotation(float rotation); // by radian
 
 	void SetSourceRect(RECT rect);
-
+	RECT getSourceRect();
 	void FlipHorizontal(bool flag); // true: lat hinh theo chieu doc, false: binh thuong
 	bool IsFlipHorizontal();
 
@@ -71,4 +76,4 @@ protected:
 	D3DXMATRIX              mMatrix; // ma tran cua Spite ho tro trong cac phep hinh hoc
 	D3DXVECTOR2             mRotationCenter; // diem trung tam trong phep xoay hinh (origin vector)
 };
-
+#endif

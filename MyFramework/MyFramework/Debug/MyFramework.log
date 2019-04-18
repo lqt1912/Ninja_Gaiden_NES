@@ -1,4 +1,10 @@
-﻿  SceneDemo.cpp
-c:\users\le quoc thang\source\repos\myframework\myframework\scenedemo.cpp(26): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\le quoc thang\source\repos\myframework\myframework\scenedemo.cpp(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  MyFramework.vcxproj -> C:\Users\Le Quoc Thang\source\repos\MyFramework\Debug\MyFramework.exe
+﻿  NinjaIdlingState.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\ninja.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\ninja.h(48): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  NinjaSittingState.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\ninja.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\admin\downloads\myframework-copy (4)\myframework - copy\myframework\ninja.h(48): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
+  MyFramework.vcxproj -> C:\Users\Admin\Downloads\MyFramework-Copy (4)\MyFramework - Copy\Debug\MyFramework.exe

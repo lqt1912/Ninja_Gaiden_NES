@@ -149,6 +149,11 @@ void Sprite::SetSourceRect(RECT rect)
 	mSourceRect = rect;
 }
 
+RECT Sprite::getSourceRect()
+{
+	return this->mSourceRect;
+}
+
 LPDIRECT3DTEXTURE9 Sprite::GetTexture()
 {
 	return mTexture;

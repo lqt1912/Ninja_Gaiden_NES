@@ -1,8 +1,10 @@
 #pragma once
 #include <d3d9.h>
 #include <d3dx9.h>
+#include <dinput.h>
 #include <Windows.h>
-
+#include <map>
+#include "Debug.h"
 class GameGlobal
 {
  public:

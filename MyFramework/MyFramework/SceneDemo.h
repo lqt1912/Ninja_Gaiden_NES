@@ -5,6 +5,7 @@
 #include "GameGlobal.h"
 #include "Sprite.h"
 #include "Animation.h"
+#include "TiledMap.h"
 using namespace std;
 class SceneDemo :
 	public Scene
@@ -16,10 +17,19 @@ public:
 	void Update(float dt);
 	void LoadContent();
 	void Draw();
+	void OnKeyDown(int KeyCode);
+	void OnKeyUp(int KeyCode);
+	void LoadMap();
+	 TiledMap* map;
 
+	 Camera* getCamera();
 protected:
 	vector<Sprite* > sprites;
-	Animation* mGoldBlock;
+	Ninja *ninja;
+
 	float mTimeCounter;
+	int key;
+	std::map<int, bool> keys;
+	Camera* mCamera;
 };
 
