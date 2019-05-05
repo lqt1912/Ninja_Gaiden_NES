@@ -159,7 +159,9 @@ SceneDemo::SceneDemo()
 	grid->getCell(22)->addObject(eButterfly);
 
 	//còn thiếu 1 con dơi ở đây 
-
+	eBat = new Bat2();
+	eBat->SetPosition(grid->getCell(22)->getPosition() + D3DXVECTOR2(-60,-10));
+	grid->getCell(22)->addObject(eBat);
 	//cell - 23 
 	ePinkWalk = new EnemyPinkWalk();
 	ePinkWalk->setFlipVertical(true);
@@ -178,7 +180,10 @@ SceneDemo::SceneDemo()
 	grid->getCell(27)->addObject(eLeopard);
 
 	//còn 1 con enemi xanh lá chưa có ở đây 
-
+	eGreenGun = new EnemyGreenGun();
+	eGreenGun->setFlipVertical(true);
+	eGreenGun->SetPosition(grid->getCell(27)->getPosition() + D3DXVECTOR2(GameGlobal::getHeight()/4,0));
+	grid->getCell(27)->addObject(eGreenGun);
 	//cell - 30
 	eButterfly = new Butterfly();
 	eButterfly->SetPosition(grid->getCell(30)->getPosition() + D3DXVECTOR2(-40, -30));

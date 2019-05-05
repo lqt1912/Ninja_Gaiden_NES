@@ -20,16 +20,7 @@ void Bird2::Draw(D3DXVECTOR3 position, RECT sourceRect, D3DXVECTOR2 scale, D3DXV
 }
 void Bird2::Update(float dt)
 {
-	////DebugOut((wchar_t*)L"dt = %f \n", dt);
-	//float dxx = this->getX() + 200;
-	//float dyy = this->getY() - 100;
-	//float length = sqrt(dxx*dxx + dyy * dyy);
-	//dxx /= length;
-	//dyy /= length;
-	//dxx *= 20;
-	//dyy *= 20;
-	//this->SetVx(dxx);
-	//this->SetVy(dyy);
+
 	birdAni->Update(dt);
 	Object::Update(dt);
 }

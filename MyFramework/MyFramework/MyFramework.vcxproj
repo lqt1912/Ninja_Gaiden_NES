@@ -127,6 +127,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="Bat2.h" />
     <ClInclude Include="Bird2.h" />
     <ClInclude Include="Butterfly.h" />
     <ClInclude Include="Camera.h" />
@@ -134,6 +135,7 @@
     <ClInclude Include="Dart.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="EnemyBrownKnife.h" />
+    <ClInclude Include="EnemyGreenGun.h" />
     <ClInclude Include="EnemyPinkWalk.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameGlobal.h" />
@@ -161,6 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Bat2.cpp" />
     <ClCompile Include="Bird2.cpp" />
     <ClCompile Include="Butterfly.cpp" />
     <ClCompile Include="Camera.cpp" />
@@ -168,6 +171,7 @@
     <ClCompile Include="Dart.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="EnemyBrownKnife.cpp" />
+    <ClCompile Include="EnemyGreenGun.cpp" />
     <ClCompile Include="EnemyPinkWalk.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameGlobal.cpp" />

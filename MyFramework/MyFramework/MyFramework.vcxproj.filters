@@ -144,6 +144,12 @@
     <ClInclude Include="Grid.h">
       <Filter>Framework\Grid</Filter>
     </ClInclude>
+    <ClInclude Include="EnemyGreenGun.h">
+      <Filter>Framework\Objects\Enemys</Filter>
+    </ClInclude>
+    <ClInclude Include="Bat2.h">
+      <Filter>Framework\Objects\Enemys</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -244,6 +250,12 @@
     </ClCompile>
     <ClCompile Include="Grid.cpp">
       <Filter>Framework\Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="Bat2.cpp">
+      <Filter>Framework\Objects\Enemys</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyGreenGun.cpp">
+      <Filter>Framework\Objects\Enemys</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -11,7 +11,8 @@
 #include "LeoPard.h"
 #include "EnemyBrownKnife.h"
 #include "EnemyPinkWalk.h"
-
+#include "Bat2.h"
+#include "EnemyGreenGun.h"
 #include "Grid.h"
 
 using namespace std;
@@ -49,6 +50,7 @@ protected:
 	EnemyBrownKnife* eBrownKnife;
 	EnemyPinkWalk* ePinkWalk;
 	Bird2* eBird;
-
+	Bat2* eBat;
+	EnemyGreenGun* eGreenGun;
 };
 

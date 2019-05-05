@@ -13,15 +13,6 @@ public:
 	{
 		this->birdAni->FlipVertical(isFlip);
 	}
-	int getX()
-	{
-		return x;
-	}
-
-	int getY()
-	{
-		return y;
-	}
 
 	Animation *birdAni;
 };

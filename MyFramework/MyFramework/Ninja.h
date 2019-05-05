@@ -36,17 +36,11 @@ public:
 	void OnKeyPressed(int key);
 
 	void OnKeyUp(int key);
-	int getX()
-	{
-		return x;
-	}
+
 
 	void setY(int y);
 	void setX(int x);
-	int getY()
-	{
-		return y;
-	}
+
 
 	//true thi se lat nguoc anh theo truc y
 	void SetReverse(bool flag);
