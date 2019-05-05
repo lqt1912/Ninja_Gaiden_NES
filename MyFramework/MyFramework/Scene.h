@@ -1,6 +1,6 @@
 #pragma once
 #include "GameGlobal.h"
-
+#include "Ninja.h"
 class Scene
 {
 public:
@@ -10,7 +10,7 @@ public:
 
 	virtual void OnKeyDown(int KeyCode);
 	virtual void OnKeyUp(int KeyCode);
-	virtual void OnMouseDown(float x, float y);
+	//virtual void OnMouseDown(float x, float y);
 
 	D3DCOLOR GetBackColor();
 

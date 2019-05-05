@@ -14,15 +14,16 @@ void Scene::Draw()
 
 void Scene::OnKeyDown(int KeyCode)
 {
+
 }
 
 void Scene::OnKeyUp(int KeyCode)
 {
 }
 
-void Scene::OnMouseDown(float x, float y)
-{
-}
+//void Scene::OnMouseDown(float x, float y)
+//{
+//}
 
 D3DCOLOR Scene::GetBackColor()
 {

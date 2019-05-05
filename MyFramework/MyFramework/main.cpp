@@ -11,8 +11,8 @@ using namespace std;
 
 #define WIN_NAME L"Ninja Gaiden NES"
 #define WIN_TITLE L"Ninja Gaiden NES"
-#define SCREEN_WIDTH 600
-#define SCREEN_HEIGHT 600
+#define SCREEN_WIDTH 320
+#define SCREEN_HEIGHT 480
 
 #define FPS 60
 #define KEYBOARD_BUFFER_SIZE 1024;
@@ -92,8 +92,8 @@ int InitDevice()
 	d3dpp.SwapEffect = D3DSWAPEFFECT_DISCARD;
 	d3dpp.BackBufferFormat = D3DFMT_A8R8G8B8;
 	d3dpp.BackBufferCount = 1;
-	d3dpp.BackBufferWidth = SCREEN_WIDTH;
-	d3dpp.BackBufferHeight = SCREEN_HEIGHT;
+	d3dpp.BackBufferWidth = GameGlobal::getWidth();
+	d3dpp.BackBufferHeight = GameGlobal::getHeight();
 
 	HRESULT result = d3d->CreateDevice(
 		D3DADAPTER_DEFAULT,
@@ -130,8 +130,7 @@ LRESULT CALLBACK WinProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 	default:
 		return DefWindowProc(hwnd, message, wParam, lParam);
 	}
-	return 0;
-	
+	return 0;	
 }
 
 

@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
     <Filter Include="Header Files">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
@@ -25,8 +21,30 @@
     <Filter Include="Framework\Scenes">
       <UniqueIdentifier>{e0c66414-d333-4fbe-9fb8-5f3169dea2ff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Framework\Objects">
+      <UniqueIdentifier>{150de809-2636-4172-8075-ca220274dfd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Objects\Ninja">
+      <UniqueIdentifier>{1ae6daa3-9671-4c41-aa59-48877900f33d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Objects\Ninja\NinjaState">
+      <UniqueIdentifier>{eeb4d8bf-7ee8-4727-ae98-c2cd9e7ca525}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Debug">
-      <UniqueIdentifier>{3e439d8d-9cc5-482c-a661-9a2c396d6ea8}</UniqueIdentifier>
+      <UniqueIdentifier>{58e42077-fe5e-4497-8ae0-333d44613389}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Map">
+      <UniqueIdentifier>{84072455-cfe1-45c5-ae9b-611296b80f57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Objects\Enemys">
+      <UniqueIdentifier>{e40398d4-ba58-42df-9ce7-0c57cef0d6fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Grid">
+      <UniqueIdentifier>{ed006add-3c93-4268-a197-2ab22f9cce47}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -51,11 +69,80 @@
     <ClInclude Include="Animation.h">
       <Filter>Framework\Components</Filter>
     </ClInclude>
+    <ClInclude Include="Ninja.h">
+      <Filter>Framework\Objects\Ninja</Filter>
+    </ClInclude>
+    <ClInclude Include="NinjaData.h">
+      <Filter>Framework\Objects\Ninja</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Framework\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="NinjaAnimations.h">
+      <Filter>Framework\Objects\Ninja</Filter>
+    </ClInclude>
+    <ClInclude Include="NinjaSittingState.h">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClInclude>
+    <ClInclude Include="NinjaRunningState.h">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClInclude>
+    <ClInclude Include="NinjaJumpingState.h">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClInclude>
     <ClInclude Include="Scene.h">
-      <Filter>Framework\Components</Filter>
+      <Filter>Framework\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="NinjaIdlingState.h">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClInclude>
+    <ClInclude Include="NinjaState.h">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
     </ClInclude>
     <ClInclude Include="Debug.h">
       <Filter>Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="NinjaFallingState.h">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClInclude>
+    <ClInclude Include="TiledMap.h">
+      <Filter>Framework\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Framework\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="NinjaAttackingState.h">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClInclude>
+    <ClInclude Include="NinjaAttackSittingState.h">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClInclude>
+    <ClInclude Include="NinjaDartingState.h">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClInclude>
+    <ClInclude Include="Dart.h">
+      <Filter>Framework\Objects\Ninja</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyPinkWalk.h">
+      <Filter>Framework\Objects\Enemys</Filter>
+    </ClInclude>
+    <ClInclude Include="LeoPard.h">
+      <Filter>Framework\Objects\Enemys</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyBrownKnife.h">
+      <Filter>Framework\Objects\Enemys</Filter>
+    </ClInclude>
+    <ClInclude Include="Butterfly.h">
+      <Filter>Framework\Objects\Enemys</Filter>
+    </ClInclude>
+    <ClInclude Include="Bird2.h">
+      <Filter>Framework\Objects\Enemys</Filter>
+    </ClInclude>
+    <ClInclude Include="Cell.h">
+      <Filter>Framework\Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.h">
+      <Filter>Framework\Grid</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -69,7 +156,7 @@
       <Filter>Framework\Components</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Resource Files\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Sprite.cpp">
       <Filter>Framework\Components</Filter>
@@ -83,11 +170,80 @@
     <ClCompile Include="Animation.cpp">
       <Filter>Framework\Components</Filter>
     </ClCompile>
+    <ClCompile Include="NinjaData.cpp">
+      <Filter>Framework\Objects\Ninja</Filter>
+    </ClCompile>
+    <ClCompile Include="Ninja.cpp">
+      <Filter>Framework\Objects\Ninja</Filter>
+    </ClCompile>
     <ClCompile Include="Scene.cpp">
-      <Filter>Framework\Components</Filter>
+      <Filter>Framework\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Framework\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="NinjaAnimations.cpp">
+      <Filter>Framework\Objects\Ninja</Filter>
+    </ClCompile>
+    <ClCompile Include="NinjaSittingState.cpp">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClCompile>
+    <ClCompile Include="NinjaRunningState.cpp">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClCompile>
+    <ClCompile Include="NinjaJumpingState.cpp">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClCompile>
+    <ClCompile Include="NinjaIdlingState.cpp">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClCompile>
+    <ClCompile Include="NinjaState.cpp">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
     </ClCompile>
     <ClCompile Include="Debug.cpp">
       <Filter>Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="NinjaFallingState.cpp">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClCompile>
+    <ClCompile Include="TiledMap.cpp">
+      <Filter>Framework\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Framework\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="NinjaAttackingState.cpp">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClCompile>
+    <ClCompile Include="NinjaAttackSittingState.cpp">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClCompile>
+    <ClCompile Include="NinjaDartingState.cpp">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClCompile>
+    <ClCompile Include="Dart.cpp">
+      <Filter>Framework\Objects\Ninja</Filter>
+    </ClCompile>
+    <ClCompile Include="LeoPard.cpp">
+      <Filter>Framework\Objects\Enemys</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyPinkWalk.cpp">
+      <Filter>Framework\Objects\Enemys</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyBrownKnife.cpp">
+      <Filter>Framework\Objects\Enemys</Filter>
+    </ClCompile>
+    <ClCompile Include="Butterfly.cpp">
+      <Filter>Framework\Objects\Enemys</Filter>
+    </ClCompile>
+    <ClCompile Include="Bird2.cpp">
+      <Filter>Framework\Objects\Enemys</Filter>
+    </ClCompile>
+    <ClCompile Include="Cell.cpp">
+      <Filter>Framework\Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="Grid.cpp">
+      <Filter>Framework\Grid</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
