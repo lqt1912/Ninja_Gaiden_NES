@@ -4,7 +4,7 @@
 
 Butterfly::Butterfly()
 {
-	butterflyAni = new Animation("Resources/Enemy1/butterfly.png", 2, 1, 2);
+	butterflyAni = new Animation("Resources/Enemy1/butterfly.png", 2, 1, 2,0.2);
 }
 
 

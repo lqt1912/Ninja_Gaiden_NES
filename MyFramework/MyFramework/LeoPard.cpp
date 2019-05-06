@@ -5,7 +5,7 @@
 LeoPard::LeoPard()
 {
 	
-	leopardAni = new Animation("Resources/Enemy1/leopard.png",2,1,2);
+	leopardAni = new Animation("Resources/Enemy1/leopard.png",2,1,2,0.2);
 }
 
 

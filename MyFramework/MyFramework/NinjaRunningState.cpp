@@ -44,7 +44,7 @@ void NinjaRunningState::HandleKeyboard(map<int, bool> keys)
 		else 
 		{
 			this->ninjaData->ninja->SetReverse(false);
-			this->ninjaData->ninja->SetVx(220.0f);
+			this->ninjaData->ninja->SetVx(100.0f);
 		}
 
 	}
@@ -58,7 +58,7 @@ void NinjaRunningState::HandleKeyboard(map<int, bool> keys)
 		else
 		{
 			this->ninjaData->ninja->SetReverse(true);
-			this->ninjaData->ninja->SetVx(-220.0f);
+			this->ninjaData->ninja->SetVx(-100.0f);
 		}
 
 	}

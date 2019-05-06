@@ -34,174 +34,166 @@ SceneDemo::SceneDemo()
 		DebugOut((wchar_t*)L"\n Cell posi x = %f, y = %f ", grid->getCell(i)->getPosition().x, grid->getCell(i)->getPosition().y);
 	}
 
-	//cell - 4 
-	eBird = new Bird2();
-	eBird->setFlipVertical(true);
-	eBird->SetPosition(grid->getCell(4)->getPosition());
-	grid->getCell(4)->addObject(eBird);
-
-	//cell - 5
-	eBird = new Bird2();
-	eBird->setFlipVertical(true);
-	eBird->SetPosition(grid->getCell(5)->getPosition()+ D3DXVECTOR2(GameGlobal::getWidth()/8,0));
-	grid->getCell(5)->addObject(eBird);
-
-	//cell - 6 
-	eButterfly = new Butterfly();
-	eButterfly->SetPosition(grid->getCell(6)->getPosition() + D3DXVECTOR2(-GameGlobal::getWidth() / 8-20, 50));
-	grid->getCell(6)->addObject(eButterfly);
-
-	//cell - 7
-	eButterfly = new Butterfly();
-	eButterfly->SetPosition(grid->getCell(7)->getPosition() - D3DXVECTOR2(GameGlobal::getWidth() / 8+10, -10));
-	grid->getCell(7)->addObject(eButterfly);
-
 	eLeopard = new LeoPard();
-	eLeopard->SetPosition(grid->getCell(7)->getPosition() + D3DXVECTOR2(0, GameGlobal::getHeight() / 4-15));
-	grid->getCell(7)->addObject(eLeopard);
+	eLeopard->SetPosition(240,161);
+	lstEnemies.push_back(eLeopard);
 
-	eLeopard = new LeoPard();
-	eLeopard->setFlipVertical(true);
-	eLeopard->SetPosition(grid->getCell(7)->getPosition() + D3DXVECTOR2(-40, GameGlobal::getHeight() / 4 - 15));
-	grid->getCell(7)->addObject(eLeopard);
-
-	//cell - 8
-	eBird = new Bird2();
-	eBird->SetPosition(grid->getCell(8)->getPosition() + D3DXVECTOR2(0, GameGlobal::getHeight() / 8));
-	grid->getCell(8)->addObject(eBird);
-
-	//cell - 9 
-	eButterfly = new Butterfly();
-	eButterfly->SetPosition(grid->getCell(9)->getPosition() );
-	grid->getCell(9)->addObject(eButterfly);
-
-	ePinkWalk = new EnemyPinkWalk();
-	ePinkWalk->setFlipVertical(true);
-	ePinkWalk->SetPosition(grid->getCell(9)->getPosition() + D3DXVECTOR2(GameGlobal::getWidth() / 8, GameGlobal::getHeight() / 8));
-	grid->getCell(9)->addObject(ePinkWalk);
-
-	//cell- 10
 	eBrownKnife = new EnemyBrownKnife();
-	eBrownKnife->SetPosition(grid->getCell(10)->getPosition() + D3DXVECTOR2(-GameGlobal::getWidth() / 8, GameGlobal::getHeight() / 8));
-	grid->getCell(10)->addObject(eBrownKnife);
+	eBrownKnife->SetPosition(258,151);
+	lstEnemies.push_back(eBrownKnife);
+
+	eBrownKnife = new EnemyBrownKnife();
+	eBrownKnife->SetPosition(308,151);
+	lstEnemies.push_back(eBrownKnife);
+
+	eBrownKnife = new EnemyBrownKnife();
+	eBrownKnife->SetPosition(355, 151);
+	lstEnemies.push_back(eBrownKnife);
 
 	eButterfly = new Butterfly();
-	eButterfly->SetPosition(grid->getCell(10)->getPosition());
-	grid->getCell(10)->addObject(eButterfly);
-
-	//cell - 11 
-	eBrownKnife = new EnemyBrownKnife();
-	eBrownKnife->SetPosition(grid->getCell(11)->getPosition() + D3DXVECTOR2(GameGlobal::getWidth() / 8-20, GameGlobal::getHeight() / 8));
-	grid->getCell(11)->addObject(eBrownKnife);
-
-	eBrownKnife = new EnemyBrownKnife();
-	eBrownKnife->SetPosition(grid->getCell(11)->getPosition() + D3DXVECTOR2(GameGlobal::getWidth() / 8 +10, 0));
-	grid->getCell(11)->addObject(eBrownKnife);
-
-	//cell -12 
-	eBird = new Bird2();
-	eBird->SetPosition(grid->getCell(12)->getPosition() + D3DXVECTOR2(0, GameGlobal::getHeight() / 8));
-	grid->getCell(12)->addObject(eBird);
-
-
-	//cell -13
-	eBird = new Bird2();
-	eBird->setFlipVertical(true);
-	eBird->SetPosition(grid->getCell(13)->getPosition() + D3DXVECTOR2(GameGlobal::getWidth() / 8 - 10, 0));
-	grid->getCell(13)->addObject(eBird);
-
-	//cell -14
-	eBird = new Bird2();
-	eBird->setFlipVertical(true);
-	eBird->SetPosition(grid->getCell(14)->getPosition() + D3DXVECTOR2(GameGlobal::getWidth() / 4 , 0));
-	grid->getCell(14)->addObject(eBird);
-
-	//cell - 18
-	eLeopard = new LeoPard();
-	eLeopard->SetPosition(grid->getCell(18)->getPosition() + D3DXVECTOR2(GameGlobal::getWidth() / 8, 0));
-	grid->getCell(18)->addObject(eLeopard);
-
-	//cell - 19 
-	eBrownKnife = new EnemyBrownKnife();
-	eBrownKnife->SetPosition(grid->getCell(19)->getPosition() );
-	grid->getCell(19)->addObject(eBrownKnife);
-
-	eBrownKnife = new EnemyBrownKnife();
-	eBrownKnife->SetPosition(grid->getCell(19)->getPosition()+ D3DXVECTOR2(GameGlobal::getWidth() / 6, 0));
-	grid->getCell(19)->addObject(eBrownKnife);
-
-	eBrownKnife = new EnemyBrownKnife();
-	eBrownKnife->SetPosition(grid->getCell(19)->getPosition()+ D3DXVECTOR2(-GameGlobal::getWidth() / 6, 0));
-	grid->getCell(19)->addObject(eBrownKnife);
+	eButterfly->SetPosition(338,130);
+	lstEnemies.push_back(eButterfly);
 
 	eButterfly = new Butterfly();
-	eButterfly->SetPosition(grid->getCell(19)->getPosition() + D3DXVECTOR2(30,-30));
-	grid->getCell(19)->addObject(eButterfly);
+	eButterfly->SetPosition(435, 130);
+	lstEnemies.push_back(eButterfly);
 
-	//cell - 20 
 
 	eBrownKnife = new EnemyBrownKnife();
-	eBrownKnife->SetPosition(grid->getCell(20)->getPosition() + D3DXVECTOR2(GameGlobal::getWidth() / 6 -20, 0));
-	grid->getCell(20)->addObject(eBrownKnife);
+	eBrownKnife->SetPosition(455, 151);
+	lstEnemies.push_back(eBrownKnife);
 
 	eButterfly = new Butterfly();
-	eButterfly->SetPosition(grid->getCell(20)->getPosition() + D3DXVECTOR2(10, -30));
-	grid->getCell(20)->addObject(eButterfly);
-	
-	//cell - 21 
-	eButterfly = new Butterfly();
-	eButterfly->SetPosition(grid->getCell(21)->getPosition() + D3DXVECTOR2(10, -30));
-	grid->getCell(21)->addObject(eButterfly);
+	eButterfly->SetPosition(578, 130);
+	lstEnemies.push_back(eButterfly);
 
-	//cell - 22
 	eButterfly = new Butterfly();
-	eButterfly->SetPosition(grid->getCell(22)->getPosition() + D3DXVECTOR2(-50,-40));
-	grid->getCell(22)->addObject(eButterfly);
+	eButterfly->SetPosition(642,114);
+	lstEnemies.push_back(eButterfly);
 
-	//còn thiếu 1 con dơi ở đây 
 	eBat = new Bat2();
-	eBat->SetPosition(grid->getCell(22)->getPosition() + D3DXVECTOR2(-60,-10));
-	grid->getCell(22)->addObject(eBat);
-	//cell - 23 
+	eBat->SetPosition(631, 149);
+	lstEnemies.push_back(eBat);
+
+	eButterfly = new Butterfly();
+	eButterfly->SetPosition(769,100);
+	lstEnemies.push_back(eButterfly);
+
+
+	eBird = new Bird2();
+	eBird->setFlipVertical(true);
+	eBird->SetPosition(563,62);
+	lstEnemies.push_back(eBird);
+
+	eBird = new Bird2();
+	eBird->setFlipVertical(true);
+	eBird->SetPosition(722,63);
+	lstEnemies.push_back(eBird);
+
 	ePinkWalk = new EnemyPinkWalk();
 	ePinkWalk->setFlipVertical(true);
-	ePinkWalk->SetPosition(grid->getCell(23)->getPosition() + D3DXVECTOR2(-5, -GameGlobal::getHeight() / 6));
-	grid->getCell(23)->addObject(ePinkWalk);
+	ePinkWalk->SetPosition(820, 122);
+	lstEnemies.push_back(ePinkWalk);
 
-	//cell - 26
 	eButterfly = new Butterfly();
-	eButterfly->SetPosition(grid->getCell(26)->getPosition() + D3DXVECTOR2(-40, -30));
-	grid->getCell(26)->addObject(eButterfly);
+	eButterfly->SetPosition(898,66);
+	lstEnemies.push_back(eButterfly);
 
-	//cell - 27 
+
 	eLeopard = new LeoPard();
 	eLeopard->setFlipVertical(true);
-	eLeopard->SetPosition(grid->getCell(27)->getPosition() + D3DXVECTOR2(-GameGlobal::getHeight() / 6, 0));
-	grid->getCell(27)->addObject(eLeopard);
+	eLeopard->SetPosition(913,98);
+	lstEnemies.push_back(eLeopard);
+
+	eLeopard = new LeoPard();
+	eLeopard->SetPosition(951, 98);
+	lstEnemies.push_back(eLeopard);
+
+	eBird = new Bird2();
+	eBird->SetPosition(1061,60);
+	lstEnemies.push_back(eBird);
+
+
+	eButterfly = new Butterfly();
+	eButterfly->SetPosition(1155,130);
+	lstEnemies.push_back(eButterfly);
+
+	eButterfly = new Butterfly();
+	eButterfly->SetPosition(1186,66);
+	lstEnemies.push_back(eButterfly);
+
+	ePinkWalk = new EnemyPinkWalk();
+	ePinkWalk->setFlipVertical(true);
+	ePinkWalk->SetPosition(1230,90);
+	lstEnemies.push_back(ePinkWalk);
+
+	eBrownKnife = new EnemyBrownKnife();
+	eBrownKnife->SetPosition(1300,90);
+	lstEnemies.push_back(eBrownKnife);
+
+	eButterfly = new Butterfly();
+	eButterfly->SetPosition(1330, 66);
+	lstEnemies.push_back(eButterfly);
+
+	eLeopard = new LeoPard();
+	eLeopard->SetPosition(1281,161);
+	lstEnemies.push_back(eLeopard);
 
 	//còn 1 con enemi xanh lá chưa có ở đây 
 	eGreenGun = new EnemyGreenGun();
 	eGreenGun->setFlipVertical(true);
-	eGreenGun->SetPosition(grid->getCell(27)->getPosition() + D3DXVECTOR2(GameGlobal::getHeight()/4,0));
-	grid->getCell(27)->addObject(eGreenGun);
-	//cell - 30
-	eButterfly = new Butterfly();
-	eButterfly->SetPosition(grid->getCell(30)->getPosition() + D3DXVECTOR2(-40, -30));
-	grid->getCell(30)->addObject(eButterfly);
+	eGreenGun->SetPosition(1376,152);
+	lstEnemies.push_back(eGreenGun);
 
-	//cell - 31
-	eButterfly = new Butterfly();
-	eButterfly->SetPosition(grid->getCell(31)->getPosition() + D3DXVECTOR2(40, -30));
-	grid->getCell(31)->addObject(eButterfly);
-
-	//cell - 32 
-	eBrownKnife = new EnemyBrownKnife();
-	eBrownKnife->SetPosition(grid->getCell(32)->getPosition() + D3DXVECTOR2(GameGlobal::getWidth() / 6, 0));
-	grid->getCell(32)->addObject(eBrownKnife);
 
 	eBrownKnife = new EnemyBrownKnife();
-	eBrownKnife->SetPosition(grid->getCell(32)->getPosition() + D3DXVECTOR2(-GameGlobal::getWidth() / 4, 0));
-	grid->getCell(32)->addObject(eBrownKnife);
+	eBrownKnife->SetPosition(1458, 90);
+	lstEnemies.push_back(eBrownKnife);
+
+	eBrownKnife = new EnemyBrownKnife();
+	eBrownKnife->SetPosition(1491, 55);
+	lstEnemies.push_back(eBrownKnife);
+
+	eBird = new Bird2();
+	eBird->SetPosition(1574,81);
+	lstEnemies.push_back(eBird);
+
+
+	eButterfly = new Butterfly();
+	eButterfly->SetPosition(1666,130);
+	lstEnemies.push_back(eButterfly);
+
+	eBird = new Bird2();
+	eBird->SetPosition(1730,63);
+	lstEnemies.push_back(eBird);
+
+	eBird = new Bird2();
+	eBird->SetPosition(1876, 63);
+	lstEnemies.push_back(eBird);
+
+	eButterfly = new Butterfly();
+	eButterfly->SetPosition(1858, 130);
+	lstEnemies.push_back(eButterfly);
+
+	eBrownKnife = new EnemyBrownKnife();
+	eBrownKnife->SetPosition(1890, 151);
+	lstEnemies.push_back(eBrownKnife);
+
+	eBrownKnife = new EnemyBrownKnife();
+	eBrownKnife->SetPosition(1972, 151);
+	lstEnemies.push_back(eBrownKnife);
+
+	for (auto e : lstEnemies)
+		e->SetPosition(e->GetPosition() + D3DXVECTOR3(-10, -7, 0));
+
+	for (auto e : lstEnemies)
+	{
+		for (int i = 0; i < 34; i++)
+		{
+			if (isCollision(grid->getCell(i)->getBound(), e->GetBound()) == 1)
+				grid->getCell(i)->addObject(e);
+		}
+	}
 
 #pragma endregion
 

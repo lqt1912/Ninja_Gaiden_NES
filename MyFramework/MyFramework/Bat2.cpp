@@ -4,7 +4,7 @@
 
 Bat2::Bat2()
 {
-	batAni = new Animation("Resources/Enemy1/bat-2.png", 2, 1, 2);
+	batAni = new Animation("Resources/Enemy1/bat-2.png", 2, 1, 2,0.2);
 }
 
 

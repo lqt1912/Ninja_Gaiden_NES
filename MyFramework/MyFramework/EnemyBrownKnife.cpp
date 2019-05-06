@@ -6,7 +6,7 @@ EnemyBrownKnife::EnemyBrownKnife()
 {
 
 	
-	enemyAni = new Animation("Resources/Enemy1/enemy_brown_with_knife.png", 2, 1, 2);
+	enemyAni = new Animation("Resources/Enemy1/enemy_brown_with_knife.png", 2, 1, 2,0.2);
 }
 
 

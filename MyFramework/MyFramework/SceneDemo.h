@@ -35,6 +35,12 @@ public:
 
 	 Camera* getCamera();
 
+	 int isCollision(RECT r1, RECT r2)
+	 {
+		 RECT dest;
+		 return IntersectRect(&dest, &r1, &r2);
+	 }
+
 protected:
 
 	vector<Sprite* > sprites;
@@ -52,5 +58,7 @@ protected:
 	Bird2* eBird;
 	Bat2* eBat;
 	EnemyGreenGun* eGreenGun;
+
+	vector<Object*> lstEnemies;
 };
 
