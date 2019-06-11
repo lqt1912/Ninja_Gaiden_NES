@@ -16,9 +16,15 @@ typedef vector<int> row;
 
 class TiledMap
 {
-	 matrix mat;
-	vector<Sprite*>tiles;
+private:
 
+	 matrix mat;
+	vector<Sprite*> tiles;
+	int number_of_row; //số cột
+	int number_of_column; //số dòng 
+	int NumberOfTiles;  //số tile khác nhau
+	int mWidth, mHeight;  //dài, 
+	int tilesetWidth, tilesetHeight;  // dài rộng cùa từng ô, mặc định 16 - 16
 public:
 	void LoadMatrix(const char* filepath);
 
@@ -26,15 +32,10 @@ public:
 
 	   // ma trận kết quả đọc file txt
 
-	int number_of_row; //số cột
-	int number_of_column; //số dòng 
-	int NumberOfTiles;  //số tile khác nhau
-	int mWidth, mHeight;  //dài, 
-	int tilesetWidth, tilesetHeight;  // dài rộng cùa từng ô, mặc định 16 - 16
 
-	LPCWSTR location;   //cái này không dùng
+
 	//nordered_map<int, Sprite*> tiles;
-	  //cái để đọc file png dài thòng lòng, lưu vào. 
+	  //cái để đọc file png , lưu vào. 
 
 	TiledMap(const char * filePath);
 	int getWidth();

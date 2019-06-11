@@ -6,7 +6,7 @@ NinjaAttackSittingState::NinjaAttackSittingState(NinjaData* ninjaData)
 {
 	s2 = 0.0f;
 	this->ninjaData = ninjaData;
-	this->ninjaData->ninja->listAni->GetInstance()->mAni[NinjaAnimations::Attack_Sitting]->setCurrentIndex(0);
+	this->ninjaData->ninja->listAni->GetInstance()->mAni[NinjaAnimations::Attack_Sitting]->SetCurrentIndex(0);
 }
 
 
@@ -20,24 +20,24 @@ void NinjaAttackSittingState::Update(float dt)
 	{
 		this->ninjaData->ninja->SetState(new NinjaSittingState(ninjaData));
 		s2 = 0.0f;
+		Ninja::GetInstance()->isAttacking = false;
 	}
 	else
+	{
 		s2 += dt;
+		Ninja::GetInstance()->isAttacking = true;
+	}
 }
 void NinjaAttackSittingState::HandleKeyboard(map<int, bool> keys)
 {
-	//if (!keys[DIK_X] && keys[DIK_DOWN])
-	//{
-	//	NinjaState* newState = new NinjaSittingState(ninjaData);
-	//	this->ninjaData->ninja->SetState(newState);
-	//}
-	//else if (!keys[DIK_X] && !keys[DIK_DOWN])
-	//{
-	//	this->ninjaData->ninja->SetState(new NinjaIdlingState(ninjaData));
-	//}
+
 }
 
 NinjaAnimations::eNinjaStates NinjaAttackSittingState::GetState()
 {
 	return NinjaAnimations::Attack_Sitting;
+}
+void NinjaAttackSittingState::OnCollision(Object* impactor, Object::SideCollisions side, Object::ResultCollision data)
+{
+
 }

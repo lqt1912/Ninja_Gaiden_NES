@@ -1,18 +1,14 @@
 #pragma once
-#include "Object.h"
+#include "Holder.h"
 
-class Butterfly : public Object
+class Butterfly : public Holder
 {
 public:
 	Butterfly();
 	~Butterfly();
-	void Draw(D3DXVECTOR3 position = D3DXVECTOR3(), RECT sourceRect = RECT(), D3DXVECTOR2 scale = D3DXVECTOR2(), D3DXVECTOR2 transform = D3DXVECTOR2(), float angle = 0, D3DXVECTOR2 rotationCenter = D3DXVECTOR2(), D3DXCOLOR colorKey = D3DCOLOR_XRGB(255, 255, 255));
-	void Update(float);
-	RECT GetBound();
-	void setFlipVertical(bool isFlip)
+	int getType()
 	{
-		this->butterflyAni->FlipVertical(isFlip);
+		return BUTTERFLY_TYPE;
 	}
-	Animation *butterflyAni;
 };
 

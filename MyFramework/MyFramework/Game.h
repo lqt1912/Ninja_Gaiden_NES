@@ -2,13 +2,13 @@
 
 #include "GameGlobal.h"
 
-#define KEYBOARD_BUFFER_SIZE 1024;
+
 
 
 class Game
 {
 public:
-	Game(int fps = 60);
+	Game(int fps = GAME_FPS);
 	~Game();
 	//Direct Input
 	LPDIRECTINPUT di;										//direct input

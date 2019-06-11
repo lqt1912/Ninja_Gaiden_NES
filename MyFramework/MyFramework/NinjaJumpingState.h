@@ -7,9 +7,8 @@ public:
 	~NinjaJumpingState();
 	void Update(float dt);
 	void HandleKeyboard(map<int, bool> keys);
-
-	virtual NinjaAnimations::eNinjaStates GetState();
-	
+	NinjaAnimations::eNinjaStates GetState();
+	void OnCollision(Object* impactor, Object::SideCollisions side, Object::ResultCollision data);
 
 protected:
 	float acceleratorY;

@@ -161,7 +161,7 @@ LPDIRECT3DTEXTURE9 Sprite::GetTexture()
 
 void Sprite::SetPosition(D3DXVECTOR3 pos)
 {
-	mPosition = pos;
+		mPosition = pos;
 }
 
 void Sprite::SetPosition(float x, float y)

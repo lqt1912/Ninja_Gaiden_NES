@@ -1,333 +1,492 @@
 ﻿#include "SceneDemo.h"
 #include "SceneManager.h"
-
-
-SceneDemo::SceneDemo()
+#include "Scene_3_2.h"
+#include "BrownBoss.h"
+#include "BulletBoss.h"
+#include "GameSound.h"
+SceneDemo::SceneDemo(int level)
 {
-	LoadMap();
-	LoadContent();
+	GameWin = new Animation("Resources/UI/GameWin.png", 1, 1, 1);
+	GameOver = new Animation("Resources/UI/GameOver.png", 1, 1, 1);
+	timer = 300;
+	mCamera = Camera::getInstance();
+	//Game's parameters
+	mTimeCounter = 0x0;
+	backcolor = 0x999;
 
-
-#pragma region LOAD_GRID
+	//Ninja's instance call
+	ninja = Ninja::GetInstance();
+	ninja->SetPosition((D3DXVECTOR3(935, 100, 0)));
 
 	grid = new Grid();
-	grid->setColumn((int)map->getWidth() / 120);
-	grid->setRow((int)map->getHeight() / 100);
-	grid->setNumberOfCell((int)map->getWidth() / 120 * (int)map->getHeight() / 100);
-	//định hình vector có số lượng cell là Numberofcell
+	//Load map with level 
 
-	for (int i = 0; i < (grid->getColumn()*grid->getRow()); i++)
+#pragma region  SoundLoad
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/Background_Sound_3_1.wav", "Sound_3_1");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/Background_Sound_3_2.wav", "Sound_3_2");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/Background_Sound_3_3.wav", "Sound_3_3");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/Ninja_Attack.wav", "ninja_attack");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/Ninja_Collided_Anemy.wav", "ninja_collided_enemy");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/Enemy_Destroy.wav", "enemy_destroy");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/Ninja_Jump.wav", "ninja_jump");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/bossdie.wav", "Boss_Die");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/Ninja_Pick_Item.wav", "Pick_Item");
+#pragma endregion  SoundLoad
+
+	switch (level)
 	{
-		Cell* cell = new Cell();
-		
-		if (i < grid->getColumn())
+	case 1:
 		{
-			cell->setPosition(D3DXVECTOR2(i * GameGlobal::getWidth() / 2 + GameGlobal::getWidth() / 4, 50));
+			map = new TiledMap("Resources/Map/3_1.txt");
+			map->LoadTileSet("Resources/Map/3_1.png");
+			map->SetCamera(Camera::getInstance());
+			Sound::getInstance()->play("Sound_3_1", true, 0);
+			Sound::getInstance()->setVolume(90.0f,"Sound_3_1");
+
+			grid->InitEnemiesObject("Resources/Enemy1/Enemies_3_1.txt");
+			grid->InitGroundObjectA_3_2("Resources/Ground/game_ground_3_1.txt");
+			break;
 		}
-		else if (i >= grid->getColumn())
+	case 2:
 		{
-			cell->setPosition(D3DXVECTOR2((i -17) * GameGlobal::getWidth() / 2 + GameGlobal::getWidth() / 4, 150));
+			map = new TiledMap("Resources/Map/3_2.txt");
+			map->LoadTileSet("Resources/Map/3_2.png");
+			map->SetCamera(Camera::getInstance());
+
+			Sound::getInstance()->stop("Sound_3_1");
+			Sound::getInstance()->play("Sound_3_2", true, 0);
+			Sound::getInstance()->setVolume(90.0f, "Sound_3_2");
+			grid->InitEnemiesObject("Resources/Enemy1/Enemies_3_2.txt");
+			grid->InitGroundObjectA_3_2("Resources/Ground/game_ground_3_2.txt");
+			break;
 		}
-		grid->AddCell(cell);
-		cell = NULL;
-		delete cell;
-		DebugOut((wchar_t*)L"\n Cell posi x = %f, y = %f ", grid->getCell(i)->getPosition().x, grid->getCell(i)->getPosition().y);
+	case 3:
+	{
+		map = new TiledMap("Resources/Map/3_3.txt");
+		map->LoadTileSet("Resources/Map/3_3.png");
+		map->SetCamera(Camera::getInstance());
+
+		Sound::getInstance()->stop("Sound_3_2");
+		Sound::getInstance()->play("Sound_3_3", true, 0);
+		Sound::getInstance()->setVolume(90.0f, "Sound_3_3");
+		grid->InitEnemiesObject("Resources/Enemy1/Enemies_3_3.txt");
+		grid->InitGroundObjectA_3_2("Resources/Ground/game_ground_3_3.txt");
+		break;
+	}
 	}
 
-	eLeopard = new LeoPard();
-	eLeopard->SetPosition(240,161);
-	lstEnemies.push_back(eLeopard);
-
-	eBrownKnife = new EnemyBrownKnife();
-	eBrownKnife->SetPosition(258,151);
-	lstEnemies.push_back(eBrownKnife);
-
-	eBrownKnife = new EnemyBrownKnife();
-	eBrownKnife->SetPosition(308,151);
-	lstEnemies.push_back(eBrownKnife);
-
-	eBrownKnife = new EnemyBrownKnife();
-	eBrownKnife->SetPosition(355, 151);
-	lstEnemies.push_back(eBrownKnife);
-
-	eButterfly = new Butterfly();
-	eButterfly->SetPosition(338,130);
-	lstEnemies.push_back(eButterfly);
-
-	eButterfly = new Butterfly();
-	eButterfly->SetPosition(435, 130);
-	lstEnemies.push_back(eButterfly);
-
-
-	eBrownKnife = new EnemyBrownKnife();
-	eBrownKnife->SetPosition(455, 151);
-	lstEnemies.push_back(eBrownKnife);
-
-	eButterfly = new Butterfly();
-	eButterfly->SetPosition(578, 130);
-	lstEnemies.push_back(eButterfly);
-
-	eButterfly = new Butterfly();
-	eButterfly->SetPosition(642,114);
-	lstEnemies.push_back(eButterfly);
-
-	eBat = new Bat2();
-	eBat->SetPosition(631, 149);
-	lstEnemies.push_back(eBat);
-
-	eButterfly = new Butterfly();
-	eButterfly->SetPosition(769,100);
-	lstEnemies.push_back(eButterfly);
-
-
-	eBird = new Bird2();
-	eBird->setFlipVertical(true);
-	eBird->SetPosition(563,62);
-	lstEnemies.push_back(eBird);
-
-	eBird = new Bird2();
-	eBird->setFlipVertical(true);
-	eBird->SetPosition(722,63);
-	lstEnemies.push_back(eBird);
-
-	ePinkWalk = new EnemyPinkWalk();
-	ePinkWalk->setFlipVertical(true);
-	ePinkWalk->SetPosition(820, 122);
-	lstEnemies.push_back(ePinkWalk);
-
-	eButterfly = new Butterfly();
-	eButterfly->SetPosition(898,66);
-	lstEnemies.push_back(eButterfly);
-
-
-	eLeopard = new LeoPard();
-	eLeopard->setFlipVertical(true);
-	eLeopard->SetPosition(913,98);
-	lstEnemies.push_back(eLeopard);
-
-	eLeopard = new LeoPard();
-	eLeopard->SetPosition(951, 98);
-	lstEnemies.push_back(eLeopard);
-
-	eBird = new Bird2();
-	eBird->SetPosition(1061,60);
-	lstEnemies.push_back(eBird);
-
-
-	eButterfly = new Butterfly();
-	eButterfly->SetPosition(1155,130);
-	lstEnemies.push_back(eButterfly);
-
-	eButterfly = new Butterfly();
-	eButterfly->SetPosition(1186,66);
-	lstEnemies.push_back(eButterfly);
-
-	ePinkWalk = new EnemyPinkWalk();
-	ePinkWalk->setFlipVertical(true);
-	ePinkWalk->SetPosition(1230,90);
-	lstEnemies.push_back(ePinkWalk);
-
-	eBrownKnife = new EnemyBrownKnife();
-	eBrownKnife->SetPosition(1300,90);
-	lstEnemies.push_back(eBrownKnife);
-
-	eButterfly = new Butterfly();
-	eButterfly->SetPosition(1330, 66);
-	lstEnemies.push_back(eButterfly);
-
-	eLeopard = new LeoPard();
-	eLeopard->SetPosition(1281,161);
-	lstEnemies.push_back(eLeopard);
-
-	//còn 1 con enemi xanh lá chưa có ở đây 
-	eGreenGun = new EnemyGreenGun();
-	eGreenGun->setFlipVertical(true);
-	eGreenGun->SetPosition(1376,152);
-	lstEnemies.push_back(eGreenGun);
-
-
-	eBrownKnife = new EnemyBrownKnife();
-	eBrownKnife->SetPosition(1458, 90);
-	lstEnemies.push_back(eBrownKnife);
-
-	eBrownKnife = new EnemyBrownKnife();
-	eBrownKnife->SetPosition(1491, 55);
-	lstEnemies.push_back(eBrownKnife);
-
-	eBird = new Bird2();
-	eBird->SetPosition(1574,81);
-	lstEnemies.push_back(eBird);
-
-
-	eButterfly = new Butterfly();
-	eButterfly->SetPosition(1666,130);
-	lstEnemies.push_back(eButterfly);
-
-	eBird = new Bird2();
-	eBird->SetPosition(1730,63);
-	lstEnemies.push_back(eBird);
-
-	eBird = new Bird2();
-	eBird->SetPosition(1876, 63);
-	lstEnemies.push_back(eBird);
-
-	eButterfly = new Butterfly();
-	eButterfly->SetPosition(1858, 130);
-	lstEnemies.push_back(eButterfly);
-
-	eBrownKnife = new EnemyBrownKnife();
-	eBrownKnife->SetPosition(1890, 151);
-	lstEnemies.push_back(eBrownKnife);
-
-	eBrownKnife = new EnemyBrownKnife();
-	eBrownKnife->SetPosition(1972, 151);
-	lstEnemies.push_back(eBrownKnife);
-
-	for (auto e : lstEnemies)
-		e->SetPosition(e->GetPosition() + D3DXVECTOR3(-10, -7, 0));
-
-	for (auto e : lstEnemies)
-	{
-		for (int i = 0; i < 34; i++)
-		{
-			if (isCollision(grid->getCell(i)->getBound(), e->GetBound()) == 1)
-				grid->getCell(i)->addObject(e);
-		}
-	}
-
-#pragma endregion
-
+	gui = Game_UI::getInstance();
+	gui->InitTimer(timer);
+	gui->setStage(3, level);
+	gui->setLife(ninja->life);
+	gui->setSpirit(ninja->spirit);
 }
-
 
 SceneDemo::~SceneDemo()
 {
+	if(grid)
+		delete grid;	
 }
-
 void SceneDemo::Update(float dt)
 {
-	this->ninja->HandleKeyboard(keys);
-	this->ninja->Update(dt);
-
-	/*but->Update(dt);
-	leo->Update(dt);
-	enemy1->Update(dt);
-	enemy2->Update(dt);*/
-
-#pragma region Camera_Execute
-
-	grid->Update(dt, mCamera);
-	int leftBound = GameGlobal::getWidth() / 2;  //biên trái
-	int rightBound = map->getWidth() - leftBound;  //biên phái
-
-	float ninX = ninja->getX();
-	float ninY = ninja->getY();
-
-	//khi ninja ở giữa 2 biên => Camera di chuyển, ninja đứng yên 
-	if (ninja->getX() >= leftBound-4 && ninja->getX() <= rightBound )
+	if (isFrozenEnemies)
 	{
-		if (ninja->GetVx() > 0)
+		if (frozenTime > 0)
+			frozenTime -= dt;
+		else
 		{
-			mCamera->SetPosition(mCamera->GetPosition() + D3DXVECTOR3(ninja->GetVx()*dt, 0, 0)); //Khóa camera biên trái 
-			ninja->setX(GameGlobal::getWidth() / 2);
+			frozenTime = FROZEN_TIME;
+			isFrozenEnemies = false;
 		}
-		if (ninja->GetVx() < 0)
+	}
+
+	if (ninja->getY() < 0)
+		grid->ResetGrid(); //reset item
+
+	// get list object isactive
+	lstColiableObject = grid->getHandlingObjectA(mCamera);
+
+	for (auto obj : grid->getBaseEnemiesList())
+	{
+		if (obj->getObjectType() == Object::eItem)
 		{
-			mCamera->SetPosition(mCamera->GetPosition() + D3DXVECTOR3(ninja->GetVx()*dt, 0, 0));
-			ninja->setX(GameGlobal::getWidth() / 2);
-		}	
-	} 
-	//DebugOut((wchar_t*)L"x :%f , vx : %f \n", (float)ninja->getX(), (float)ninja->GetVx());
-	//Xử lý ở biên phải 
-	if (mCamera->GetPosition().x>rightBound )
-	{
-
-			//khóa camera lại ở biên phải 
-
-			mCamera->SetPosition(rightBound, mCamera->GetPosition().y);
-			
-			//di chuyển ninja 
-			ninja->setX(ninX + ninja->GetVx()*dt);
-			
-			if (ninja->GetVx() < 0)
-			{
-				
-				ninja->setX(ninX + ninja->GetVx()*dt);
-				
-			}
+			auto i = (Item*)obj;
+			i->DetectGroundA(grid->lstGroundA);
+		}
+		else if (obj->type == LEOPARD_TYPE)
+		{
+			auto l = (LeoPard*)obj;
+			l->OnCollisionWithGroundA(grid->lstGroundA);
+		}
+		else if (obj->type == GREEN_WALK_TYPE)
+		{
+			auto l = (EnemyGreenWalk*)obj;
+			l->OnCollisionWithGroundA(grid->lstGroundA);
+		}
 	}
-	
-	//xử lý ở biên trái 
-	if (mCamera->GetPosition().x < leftBound-4)
-	{
-		mCamera->SetPosition(leftBound, mCamera->GetPosition().y);
-		ninja->setX(ninX + ninja->GetVx()*dt);
-	}
-#pragma endregion
+
+	// weapon update
+	this->UpdateWeapon(dt);
+
+	// check ground 
+	if (grid->lstGroundA.size() > 0)
+		if (ninja->GetVy() <= 0 && ninja->GetState() != NinjaAnimations::Idling)
+			ninja->OnCollisionWithGroundA(grid->lstGroundA);
+
+	if (grid->lstWall.size() > 0)
+		if (ninja->GetState() == NinjaAnimations::Jumping || ninja->GetState() == NinjaAnimations::Falling)
+			ninja->OnCollisionWithWall(grid->lstWall);
+		else if (ninja->GetState() == NinjaAnimations::Injuring && !ninja->isOnWall)
+			ninja->OnCollisionWithWall(grid->lstWall);
+
+	if (grid->lstLadder.size() > 0)
+		if (ninja->GetState() == NinjaAnimations::Jumping || ninja->GetState() == NinjaAnimations::Falling)
+			ninja->OnCollisionWithLadder(grid->lstLadder);
+		else if (ninja->GetState() == NinjaAnimations::Injuring && !ninja->isOnWall)
+			ninja->OnCollisionWithLadder(grid->lstLadder);
+
+	//Handle keyboard's events
+	this->ninja->HandleKeyboard(keys);
+
+	//Ninja update 
+	this->ninja->Update(dt, lstColiableObject);
+	//ninja->Update(dt);
+
+	//Left-bound and Right-bound of camera
+	int right = (int)map->getWidth() - GameGlobal::getWidth() / 2;
+	int left = (int)GameGlobal::getWidth() / 2;
+
+	//Camera moving toward ninja
+	if (ninja->GetPosition().x > left && ninja->GetPosition().x < right)
+		Camera::getInstance()->setX(ninja->GetPosition().x - left);
+
+	//Ninja executing at 2 bounds
 	if (ninja->getX() < 0)
-	{
 		ninja->setX(0);
-	}
-	
-	if (ninja->getX() >= GameGlobal::getWidth())
+	if (ninja->getX() > map->getWidth())
+		ninja->setX(map->getWidth());
+
+	//Grid update
+	if (ninja->GetPosition().x < 20)
 	{
-		ninja->setX(GameGlobal::getWidth());
+		//if (isFrozenEnemies == true)
+		//	isFrozenEnemies = false;
+		grid->ResetGrid();
+	}
+	else 
+		grid->UpdateA(dt, Camera::getInstance());
+
+	// ui update
+	gui->setScore(ninja->score);
+	gui->setSpirit(ninja->spirit);
+	gui->Update(dt);
+
+	//checkpoint 
+	if (ninja->physical <= 0)
+	{
+		ninja->physical = 16;	
+		Game_UI::getInstance()->ResetHealth();
+		ninja->life--;
+		Game_UI::getInstance()->setLife(ninja->life);
+
+		ninja->Reset();
+		for (auto e : grid->getBaseEnemiesList())
+			e->Reset(e->getInitPosition());
+		mCamera->SetPosition(0, 208);
+	}
+
+	switch (level)
+	{
+	case 1:
+	{
+		if (ninja->getX() > CHECKPOINT_1)
+		{
+			
+			SceneDemo* scene = new SceneDemo(2);
+			SceneManager::GetInstance()->ReplaceScene(scene);
+			Camera::getInstance()->SetPosition(0, 208);
+			Ninja::GetInstance()->SetVx(0);
+			Ninja::GetInstance()->SetPosition(50, 100);
+		}
+		break;
+	}
+	case 2:
+	{
+		if (ninja->getX() > CHECKPOINT_2)
+		{
+			SceneDemo* scene = new SceneDemo(3);
+			SceneManager::GetInstance()->ReplaceScene(scene);
+			Camera::getInstance()->SetPosition(0, 208);
+			Ninja::GetInstance()->SetVx(0);
+			Ninja::GetInstance()->SetPosition(50, 100);
+		}
+		break;
+	}
 	}
 }
 
-void SceneDemo::LoadContent()
-{
-	mTimeCounter = 0x0;
-
-	backcolor =0x999;
-	ninja = new Ninja();
-	ninja->SetPosition(50,150);
-	
-	mCamera = new Camera(GameGlobal::getWidth(), GameGlobal::getHeight());
-
-	//vị trí camera là ở trung tâm màn hình 
-	mCamera->SetPosition(GameGlobal::getWidth() / 2, map->getHeight()-GameGlobal::getHeight() / 2);
-	
-	map->SetCamera(mCamera);
-}
 
 void SceneDemo::Draw()
 {
+
+	//Translate vector
+	D3DXVECTOR2 trans = D3DXVECTOR2((int)(-Camera::getInstance()->GetPosition().x), 0);
+
+
+	//Background rendering
 	map->Render();
-	ninja->Draw();
-	//but->Draw();
-	//leo->Draw();
-	//enemy1->Draw();
-	//enemy2->Draw();
-	D3DXVECTOR2 trans = D3DXVECTOR2((int)(GameGlobal::getWidth() / 2 - mCamera->GetPosition().x),
-		(int)(GameGlobal::getHeight() / 2 - mCamera->GetPosition().y));
-	grid->Render(trans,mCamera);
+
+	//Game's UI rendering
+	gui->Draw(D3DXVECTOR3(145, 16, 0));
+	//Weapon rendering
+
+	if (knife != NULL)
+		GameDebugDraw::getInstance()->DrawRect(knife->GetBound(), mCamera);
+
+	//Ninja rendering 
+	ninja->Draw(ninja->GetPosition());
+	//GameDebugDraw::getInstance()->DrawRect(ninja->GetBound(), mCamera);
+
+
+	for (auto e : lstWeaponEnemy)
+	{
+
+		if (e->getActive())
+		{
+			e->Draw(e->GetPosition());
+		}
+		else
+		{
+			e = nullptr;
+		}
+	}
+	//Grid rendering
+	grid->RenderA(trans, mCamera);
+
+
+
+	for (auto a : grid->lstGroundA)
+		GameDebugDraw::getInstance()->DrawRect(BoxToRect(a), mCamera);
+
+	if (weapon && ninja->getSpirit() + weapon->limitSpirit >= weapon->limitSpirit)
+		weapon->Draw(weapon->GetPosition());
+
+
+
+	//Endgame
+	if (ninja->life <= 0 || timer <=0)
+		GameOver->Draw(D3DXVECTOR3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0));
+
+
 }
 void SceneDemo::OnKeyDown(int KeyCode)
 {
 	keys[KeyCode] = true;
 	ninja->OnKeyPressed(KeyCode);
-	
-
-
 }
+
 void SceneDemo::OnKeyUp(int KeyCode)
 {
-	
+
 	keys[KeyCode] = false;
-	//ninja->allowJump = true;
 	ninja->OnKeyUp(KeyCode);
 }
 
-void SceneDemo::LoadMap()
+
+bool SceneDemo::isCollision(RECT rect1, RECT rect2)
 {
-	map = new TiledMap("Resources/Map/3_1.txt");
-	//map->LoadMatrix("Resources/Map/3_1.txt");
-	map->LoadTileSet("Resources/Map/3_1.png");
-	
+	if (rect1.left > rect2.right || rect1.right < rect2.left || rect1.top < rect2.bottom || rect1.bottom > rect2.top)
+	{
+		return false;
+	}
+	return true;
 }
 
-Camera * SceneDemo::getCamera()
+
+void SceneDemo::UpdateWeapon(float dt)
 {
-	return mCamera;
+	for (auto obj : grid->getBaseEnemiesList())
+	{
+		if (obj->getObjectType() == Object::eItem)
+		{
+			auto i = (Item*)obj;
+			i->DetectGroundA(grid->lstGroundA);
+		}
+		else
+		{
+			switch (obj->type)
+			{
+
+			case PINK_WALK_TYPE:
+			{
+				auto e = (EnemyPinkWalk*)obj;
+				if (e->isAttacking && isFrozenEnemies ==false)
+				{
+					e->isAttacking = false;
+					auto swordOfPink = new SwordOfPink();
+
+					swordOfPink->SetPosition(e->GetPosition());
+					swordOfPink->limitY = swordOfPink->GetPosition().y + 50;
+
+					if (obj->IsFlipVertical() == true)
+						swordOfPink->SetVx(-(abs(ninja->GetPosition().x - obj->GetPosition().x)) + 15);
+					else if (obj->IsFlipVertical() == false)
+						swordOfPink->SetVx((abs(ninja->GetPosition().x - obj->GetPosition().x)) - 15);
+
+					lstWeaponEnemy.insert(swordOfPink);
+				}
+				break;
+			}
+			case GREEN_GUN_TYPE:
+			{
+				auto e = (EnemyGreenGun*)obj;
+				if (e->isAttacking && isFrozenEnemies ==false)
+				{
+					e->isAttacking = false;
+					for (int i = 1; i <= BULLET_PER_TIME; i++)
+					{
+						auto bullet = new Bullet();
+						if (ninja->GetPosition().x - obj->GetPosition().x < 0)
+						{
+							bullet->setFlipVertical(false);
+							bullet->SetPosition(e->GetPosition().x - i * 6, e->GetPosition().y + 5);
+							bullet->SetVx(-i * 4);
+						}
+						else
+						{
+							bullet->setFlipVertical(true);
+							bullet->SetPosition(e->GetPosition().x + i * 6, e->GetPosition().y + 5);
+							bullet->SetVx((i * 4));
+						}
+						lstWeaponEnemy.insert(bullet);
+					}
+				}
+				break;
+			}
+			case GREEN_BAZOOKA_TYPE:
+			{
+				auto e = (EnemyGreenBazooka*)obj;
+				if (e->isAttacking && isFrozenEnemies == false)
+				{
+					e->isAttacking = false;
+
+					auto bullet = new BulletBazooka();
+					if (ninja->GetPosition().x - obj->GetPosition().x < 0)
+					{
+						bullet->setFlipVertical(true);
+						bullet->SetPosition(e->GetPosition().x - 10, e->GetPosition().y + 6);
+						bullet->SetVx(-40);
+					}
+					else
+					{
+						bullet->SetVx(40);
+						bullet->setFlipVertical(false);
+						bullet->SetPosition(e->GetPosition().x + 10, e->GetPosition().y + 6);
+					}
+					lstWeaponEnemy.insert(bullet);
+
+				}
+				break;
+			}
+
+			case 11:
+			{
+
+				auto e = (BrownBoss*)obj;
+				if (e->isAttacking && isFrozenEnemies == false)
+				{
+					e->isAttacking = false;
+					for (int i = 1; i <= 3; i++)
+					{
+						auto bullet = new BulletBoss();
+						if (obj->IsFlipVertical())
+						{
+							bullet->setFlipVertical(true);
+							bullet->SetPosition(e->GetPosition().x - i * 3, e->GetPosition().y + i * 20 - 40);
+							bullet->SetVx(80);
+						}
+						else
+						{
+							bullet->setFlipVertical(false);
+							bullet->SetPosition(e->GetPosition().x + i * 3, e->GetPosition().y + i * 20 - 40);
+							bullet->SetVx((-80));
+						}
+						lstWeaponEnemy.insert(bullet);
+					}
+				}
+			}
+			}
+		}
+	}
+
+	for (auto e : lstWeaponEnemy)
+	{
+		if (!e->isActive)
+			e = nullptr;
+		else
+			e->Update(dt);
+
+		if (e!=NULL)
+			lstColiableObject.push_back(e);
+	}
+	// knife weapon
+	if (this->ninja->isAttacking)
+	{
+		if (knife == NULL)
+			knife = new Knife();
+	}
+
+	if (knife!=NULL)
+	{
+		if (!ninja->isAttacking)
+		{
+			if (knife->flag)
+			{
+				for (auto e : lstColiableObject)
+					if (e->type == 11)
+					{
+						auto b = (BrownBoss*)e;
+						b->MinusBlood();
+					}
+				knife->flag = false;
+			}
+			knife = NULL;
+		}
+		else
+			knife->Update(dt, lstColiableObject, grid);
+	}
+	// other weapon 
+
+	if (ninja->spirit > 2 && this->ninja->isDarting && weapon == NULL)
+	{
+		switch (ninja->specialWeapon)
+		{
+		case Object::eStar:
+			weapon = new Star();
+			break;
+		case Object::eWindStar:
+			weapon = new WindmillStar();
+			break;
+		case Object::eFireWheel:
+			weapon = new FireWheel();
+			break;
+		case Object::NoneWeapon:
+			weapon = NULL;
+			break;
+		default:
+			break;
+		}
+		if (weapon)
+		{
+			ninja->AddSpirit(-weapon->limitSpirit);
+			this->ninja->isDarting = false;
+			weapon->SetPosition(ninja->GetPosition());
+		}
+	}
+	if (weapon && ninja->spirit + weapon->limitSpirit >= weapon->limitSpirit)
+	{
+		weapon->Update(dt, lstColiableObject, grid);
+		if (!weapon->isActive)
+			weapon = NULL;
+	}
 }

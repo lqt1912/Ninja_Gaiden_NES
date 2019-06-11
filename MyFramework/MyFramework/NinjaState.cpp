@@ -28,4 +28,10 @@ void NinjaState::HandleKeyboard(map<int, bool> keys)
 
 }
 
+void NinjaState::OnCollision(Object* impactor, Object::SideCollisions side, Object::ResultCollision data)
+{
+
+}
+
+
 

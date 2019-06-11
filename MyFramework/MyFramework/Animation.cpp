@@ -86,3 +86,8 @@ void Animation::Draw(D3DXVECTOR3 position, RECT sourceRect, D3DXVECTOR2 scale,
 
 	Sprite::Draw(position, sourceRect, scale, transform, angle, rotationCenter, colorKey);
 }
+
+void Animation::SetCurrentIndex(int index)
+{
+	mCurrentIndex = index;
+}

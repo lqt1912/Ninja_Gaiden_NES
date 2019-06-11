@@ -5,42 +5,34 @@
 NinjaJumpingState::NinjaJumpingState(NinjaData *ninjaData)
 {
 	this->ninjaData = ninjaData;
-	this->ninjaData->ninja->SetVy(-150);
+	this->ninjaData->ninja->SetVy(NINJA_JUMP_HEIGHT);
 
-	acceleratorY = 6.0f;
-	acceleratorX = 6.0f;
+	acceleratorY = NINJA_ACE_Y;
+	acceleratorX = NINJA_ACE_X;
 
 	noPressed = false;
 }
 
-
 NinjaJumpingState::~NinjaJumpingState()
 {
+
 }
 void NinjaJumpingState::HandleKeyboard(map<int, bool> keys)
 {
-
-	if (keys[DIK_RIGHT] && keys[DIK_LEFT])
+	 if (keys[DIK_RIGHT] && keys[DIK_LEFT])
 	{
 		ninjaData->ninja->SetVx(0.0f);
 	}
 	else if (keys[DIK_RIGHT])
 	{
 		ninjaData->ninja->SetReverse(false);
-
-		this->ninjaData->ninja->SetVx(50);
+		this->ninjaData->ninja->SetVx(NINJA_JUMP_VX);
 		noPressed = false;
 	}
 	else if (keys[DIK_LEFT])
 	{
 		ninjaData->ninja->SetReverse(true);
-
-		this->ninjaData->ninja->SetVx(-50);
-		noPressed = false;
-	}
-	else if (keys[DIK_X])
-	{
-		this->ninjaData->ninja->SetState(new NinjaAttackingState(ninjaData));
+		this->ninjaData->ninja->SetVx(-NINJA_JUMP_VX);
 		noPressed = false;
 	}
 	else
@@ -51,9 +43,9 @@ void NinjaJumpingState::HandleKeyboard(map<int, bool> keys)
 void NinjaJumpingState::Update(float dt)
 {
 	
-	this->ninjaData->ninja->AddVy(acceleratorY);
-	//DebugOut((wchar_t*)L"Jumpping : vy = %f, y = %f \n", ninjaData->ninja->GetVy(), ninjaData->ninja->getY());
-	if (ninjaData->ninja->GetVy() >= 0.0f)
+	this->ninjaData->ninja->AddVy(-acceleratorY);
+	
+	if (ninjaData->ninja->GetVy() <= 0.0f)
 	{
 		ninjaData->ninja->SetState(new NinjaFallingState(this->ninjaData));
 		return;
@@ -85,7 +77,22 @@ void NinjaJumpingState::Update(float dt)
 		}
 	}
 }
+
 NinjaAnimations::eNinjaStates NinjaJumpingState::GetState()
 {
 	return NinjaAnimations::Jumping;
+}
+
+void NinjaJumpingState::OnCollision(Object* impactor, Object::SideCollisions side, Object::ResultCollision data)
+{
+	//switch (side)
+	//{
+	//case Object::Bottom:
+	//	//if (data.RegionCollision.right - data.RegionCollision.left >= 6.0f)
+	//	
+	//		
+	//		this->ninjaData->ninja->AddPosition(0,(data.RegionCollision.top - data.RegionCollision.bottom));
+	//	
+	//	//this->ninjaData->ninja->SetState(new NinjaIdlingState(ninjaData));
+	//}
 }

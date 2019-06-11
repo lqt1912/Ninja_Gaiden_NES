@@ -18,9 +18,6 @@
     <Filter Include="Framework\Controllers">
       <UniqueIdentifier>{0734a11b-30bd-40c9-a2ca-12dfabe8f186}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Framework\Scenes">
-      <UniqueIdentifier>{e0c66414-d333-4fbe-9fb8-5f3169dea2ff}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resource Files\Source Files">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
@@ -40,11 +37,29 @@
     <Filter Include="Framework\Map">
       <UniqueIdentifier>{84072455-cfe1-45c5-ae9b-611296b80f57}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Framework\Objects\Enemys">
-      <UniqueIdentifier>{e40398d4-ba58-42df-9ce7-0c57cef0d6fe}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Framework\Grid">
       <UniqueIdentifier>{ed006add-3c93-4268-a197-2ab22f9cce47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\UI">
+      <UniqueIdentifier>{263f0738-693c-4af5-80d6-4df67f29ac14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Objects\Holder">
+      <UniqueIdentifier>{8f43540a-14ec-4e0e-94e8-3f8258836e87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Objects\Item">
+      <UniqueIdentifier>{8be08b55-8879-45ca-baf5-e5b387b9b363}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Objects\Enemy">
+      <UniqueIdentifier>{e40398d4-ba58-42df-9ce7-0c57cef0d6fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Objects\Weapon">
+      <UniqueIdentifier>{ae7214cc-a6ea-4f5b-b046-a7c36081fa4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Objects\Weapon\WeaponEnemy">
+      <UniqueIdentifier>{4089e0ed-4ae6-43bc-9213-fa6c68f65808}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Scenes">
+      <UniqueIdentifier>{e0c66414-d333-4fbe-9fb8-5f3169dea2ff}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -64,16 +79,10 @@
       <Filter>Framework\Controllers</Filter>
     </ClInclude>
     <ClInclude Include="SceneDemo.h">
-      <Filter>Framework\Scenes</Filter>
+      <Filter>Resource Files\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
       <Filter>Framework\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Ninja.h">
-      <Filter>Framework\Objects\Ninja</Filter>
-    </ClInclude>
-    <ClInclude Include="NinjaData.h">
-      <Filter>Framework\Objects\Ninja</Filter>
     </ClInclude>
     <ClInclude Include="Object.h">
       <Filter>Framework\Objects</Filter>
@@ -81,20 +90,8 @@
     <ClInclude Include="NinjaAnimations.h">
       <Filter>Framework\Objects\Ninja</Filter>
     </ClInclude>
-    <ClInclude Include="NinjaSittingState.h">
-      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
-    </ClInclude>
-    <ClInclude Include="NinjaRunningState.h">
-      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
-    </ClInclude>
-    <ClInclude Include="NinjaJumpingState.h">
-      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
-    </ClInclude>
     <ClInclude Include="Scene.h">
-      <Filter>Framework\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="NinjaIdlingState.h">
-      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+      <Filter>Resource Files\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="NinjaState.h">
       <Filter>Framework\Objects\Ninja\NinjaState</Filter>
@@ -102,14 +99,38 @@
     <ClInclude Include="Debug.h">
       <Filter>Debug</Filter>
     </ClInclude>
-    <ClInclude Include="NinjaFallingState.h">
-      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
-    </ClInclude>
     <ClInclude Include="TiledMap.h">
       <Filter>Framework\Map</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Framework\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyPinkWalk.h">
+      <Filter>Framework\Objects\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="LeoPard.h">
+      <Filter>Framework\Objects\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyBrownKnife.h">
+      <Filter>Framework\Objects\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Bird2.h">
+      <Filter>Framework\Objects\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Cell.h">
+      <Filter>Framework\Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.h">
+      <Filter>Framework\Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyGreenGun.h">
+      <Filter>Framework\Objects\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>Framework\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="NinjaSittingState.h">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
     </ClInclude>
     <ClInclude Include="NinjaAttackingState.h">
       <Filter>Framework\Objects\Ninja\NinjaState</Filter>
@@ -120,35 +141,131 @@
     <ClInclude Include="NinjaDartingState.h">
       <Filter>Framework\Objects\Ninja\NinjaState</Filter>
     </ClInclude>
-    <ClInclude Include="Dart.h">
+    <ClInclude Include="NinjaData.h">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClInclude>
+    <ClInclude Include="NinjaDyingState.h">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClInclude>
+    <ClInclude Include="NinjaFallingState.h">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClInclude>
+    <ClInclude Include="NinjaIdlingState.h">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClInclude>
+    <ClInclude Include="NinjaImpactingState.h">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClInclude>
+    <ClInclude Include="NinjaInjuringState.h">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClInclude>
+    <ClInclude Include="NinjaJumpingState.h">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClInclude>
+    <ClInclude Include="NinjaRunningState.h">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClInclude>
+    <ClInclude Include="Knife.h">
+      <Filter>Framework\Objects\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>Framework\Objects\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="Ninja.h">
       <Filter>Framework\Objects\Ninja</Filter>
     </ClInclude>
-    <ClInclude Include="EnemyPinkWalk.h">
-      <Filter>Framework\Objects\Enemys</Filter>
-    </ClInclude>
-    <ClInclude Include="LeoPard.h">
-      <Filter>Framework\Objects\Enemys</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyBrownKnife.h">
-      <Filter>Framework\Objects\Enemys</Filter>
+    <ClInclude Include="Enemy.h">
+      <Filter>Framework\Objects\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="Butterfly.h">
-      <Filter>Framework\Objects\Enemys</Filter>
+      <Filter>Framework\Objects\Holder</Filter>
     </ClInclude>
-    <ClInclude Include="Bird2.h">
-      <Filter>Framework\Objects\Enemys</Filter>
+    <ClInclude Include="Holder.h">
+      <Filter>Framework\Objects\Holder</Filter>
     </ClInclude>
-    <ClInclude Include="Cell.h">
-      <Filter>Framework\Grid</Filter>
+    <ClInclude Include="Item.h">
+      <Filter>Framework\Objects\Item</Filter>
     </ClInclude>
-    <ClInclude Include="Grid.h">
-      <Filter>Framework\Grid</Filter>
+    <ClInclude Include="FireWheelItem.h">
+      <Filter>Framework\Objects\Item</Filter>
     </ClInclude>
-    <ClInclude Include="EnemyGreenGun.h">
-      <Filter>Framework\Objects\Enemys</Filter>
+    <ClInclude Include="WindmillStarItem.h">
+      <Filter>Framework\Objects\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="StarItem.h">
+      <Filter>Framework\Objects\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="SpiritRedItem.h">
+      <Filter>Framework\Objects\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="SpiritBlueItem.h">
+      <Filter>Framework\Objects\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="BonusBlueItem.h">
+      <Filter>Framework\Objects\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="BonusRedItem.h">
+      <Filter>Framework\Objects\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicalItem.h">
+      <Filter>Framework\Objects\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeFreezeItem.h">
+      <Filter>Framework\Objects\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Star.h">
+      <Filter>Framework\Objects\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="FireWheel.h">
+      <Filter>Framework\Objects\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_UI.h">
+      <Filter>Framework\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="WindmillStar.h">
+      <Filter>Framework\Objects\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="SwordOfPink.h">
+      <Filter>Framework\Objects\Weapon\WeaponEnemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Framework\Objects\Weapon\WeaponEnemy</Filter>
     </ClInclude>
     <ClInclude Include="Bat2.h">
-      <Filter>Framework\Objects\Enemys</Filter>
+      <Filter>Framework\Objects\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyGreenBazooka.h">
+      <Filter>Framework\Objects\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyGreenWalk.h">
+      <Filter>Framework\Objects\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Bird.h">
+      <Filter>Framework\Objects\Holder</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletBazooka.h">
+      <Filter>Framework\Objects\Weapon\WeaponEnemy</Filter>
+    </ClInclude>
+    <ClInclude Include="NinjaClimbingState.h">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClInclude>
+    <ClInclude Include="NinjaClingingState.h">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameDebugDraw.h">
+      <Filter>Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Ground.h">
+      <Filter>Framework\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="BrownBoss.h">
+      <Filter>Framework\Objects\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletBoss.h">
+      <Filter>Framework\Objects\Weapon\WeaponEnemy</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSound.h">
+      <Filter>Framework\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -171,19 +288,13 @@
       <Filter>Framework\Controllers</Filter>
     </ClCompile>
     <ClCompile Include="SceneDemo.cpp">
-      <Filter>Framework\Scenes</Filter>
+      <Filter>Resource Files\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>Framework\Components</Filter>
     </ClCompile>
-    <ClCompile Include="NinjaData.cpp">
-      <Filter>Framework\Objects\Ninja</Filter>
-    </ClCompile>
-    <ClCompile Include="Ninja.cpp">
-      <Filter>Framework\Objects\Ninja</Filter>
-    </ClCompile>
     <ClCompile Include="Scene.cpp">
-      <Filter>Framework\Scenes</Filter>
+      <Filter>Resource Files\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Object.cpp">
       <Filter>Framework\Objects</Filter>
@@ -191,32 +302,41 @@
     <ClCompile Include="NinjaAnimations.cpp">
       <Filter>Framework\Objects\Ninja</Filter>
     </ClCompile>
-    <ClCompile Include="NinjaSittingState.cpp">
-      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
-    </ClCompile>
-    <ClCompile Include="NinjaRunningState.cpp">
-      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
-    </ClCompile>
-    <ClCompile Include="NinjaJumpingState.cpp">
-      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
-    </ClCompile>
-    <ClCompile Include="NinjaIdlingState.cpp">
-      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
-    </ClCompile>
     <ClCompile Include="NinjaState.cpp">
       <Filter>Framework\Objects\Ninja\NinjaState</Filter>
     </ClCompile>
     <ClCompile Include="Debug.cpp">
       <Filter>Debug</Filter>
     </ClCompile>
-    <ClCompile Include="NinjaFallingState.cpp">
-      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
-    </ClCompile>
     <ClCompile Include="TiledMap.cpp">
       <Filter>Framework\Map</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Framework\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="LeoPard.cpp">
+      <Filter>Framework\Objects\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyPinkWalk.cpp">
+      <Filter>Framework\Objects\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyBrownKnife.cpp">
+      <Filter>Framework\Objects\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Bird2.cpp">
+      <Filter>Framework\Objects\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Cell.cpp">
+      <Filter>Framework\Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="Grid.cpp">
+      <Filter>Framework\Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyGreenGun.cpp">
+      <Filter>Framework\Objects\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>Framework\Components</Filter>
     </ClCompile>
     <ClCompile Include="NinjaAttackingState.cpp">
       <Filter>Framework\Objects\Ninja\NinjaState</Filter>
@@ -227,35 +347,134 @@
     <ClCompile Include="NinjaDartingState.cpp">
       <Filter>Framework\Objects\Ninja\NinjaState</Filter>
     </ClCompile>
-    <ClCompile Include="Dart.cpp">
+    <ClCompile Include="NinjaData.cpp">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClCompile>
+    <ClCompile Include="NinjaDyingState.cpp">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClCompile>
+    <ClCompile Include="NinjaFallingState.cpp">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClCompile>
+    <ClCompile Include="NinjaIdlingState.cpp">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClCompile>
+    <ClCompile Include="NinjaImpactingState.cpp">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClCompile>
+    <ClCompile Include="NinjaInjuringState.cpp">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClCompile>
+    <ClCompile Include="NinjaJumpingState.cpp">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClCompile>
+    <ClCompile Include="NinjaRunningState.cpp">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClCompile>
+    <ClCompile Include="NinjaSittingState.cpp">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClCompile>
+    <ClCompile Include="Knife.cpp">
+      <Filter>Framework\Objects\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>Framework\Objects\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="Ninja.cpp">
       <Filter>Framework\Objects\Ninja</Filter>
     </ClCompile>
-    <ClCompile Include="LeoPard.cpp">
-      <Filter>Framework\Objects\Enemys</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyPinkWalk.cpp">
-      <Filter>Framework\Objects\Enemys</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyBrownKnife.cpp">
-      <Filter>Framework\Objects\Enemys</Filter>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Framework\Objects\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="Butterfly.cpp">
-      <Filter>Framework\Objects\Enemys</Filter>
+      <Filter>Framework\Objects\Holder</Filter>
     </ClCompile>
-    <ClCompile Include="Bird2.cpp">
-      <Filter>Framework\Objects\Enemys</Filter>
+    <ClCompile Include="Holder.cpp">
+      <Filter>Framework\Objects\Holder</Filter>
     </ClCompile>
-    <ClCompile Include="Cell.cpp">
-      <Filter>Framework\Grid</Filter>
+    <ClCompile Include="Item.cpp">
+      <Filter>Framework\Objects\Item</Filter>
     </ClCompile>
-    <ClCompile Include="Grid.cpp">
-      <Filter>Framework\Grid</Filter>
+    <ClCompile Include="WindmillStarItem.cpp">
+      <Filter>Framework\Objects\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="StarItem.cpp">
+      <Filter>Framework\Objects\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="SpiritRedItem.cpp">
+      <Filter>Framework\Objects\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="SpiritBlueItem.cpp">
+      <Filter>Framework\Objects\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="FireWheelItem.cpp">
+      <Filter>Framework\Objects\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeFreezeItem.cpp">
+      <Filter>Framework\Objects\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicalItem.cpp">
+      <Filter>Framework\Objects\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="BonusRedItem.cpp">
+      <Filter>Framework\Objects\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="BonusBlueItem.cpp">
+      <Filter>Framework\Objects\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Star.cpp">
+      <Filter>Framework\Objects\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="FireWheel.cpp">
+      <Filter>Framework\Objects\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_UI.cpp">
+      <Filter>Framework\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="WindmillStar.cpp">
+      <Filter>Framework\Objects\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="SwordOfPink.cpp">
+      <Filter>Framework\Objects\Weapon\WeaponEnemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Framework\Objects\Weapon\WeaponEnemy</Filter>
     </ClCompile>
     <ClCompile Include="Bat2.cpp">
-      <Filter>Framework\Objects\Enemys</Filter>
+      <Filter>Framework\Objects\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="EnemyGreenGun.cpp">
-      <Filter>Framework\Objects\Enemys</Filter>
+    <ClCompile Include="EnemyGreenBazooka.cpp">
+      <Filter>Framework\Objects\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyGreenWalk.cpp">
+      <Filter>Framework\Objects\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Bird.cpp">
+      <Filter>Framework\Objects\Holder</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletBazooka.cpp">
+      <Filter>Framework\Objects\Weapon\WeaponEnemy</Filter>
+    </ClCompile>
+    <ClCompile Include="NinjaClimbingState.cpp">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClCompile>
+    <ClCompile Include="NinjaClingingState.cpp">
+      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameDebugDraw.cpp">
+      <Filter>Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Ground.cpp">
+      <Filter>Framework\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="BrownBoss.cpp">
+      <Filter>Framework\Objects\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletBoss.cpp">
+      <Filter>Framework\Objects\Weapon\WeaponEnemy</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSound.cpp">
+      <Filter>Framework\Components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

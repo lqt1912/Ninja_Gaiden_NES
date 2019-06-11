@@ -6,12 +6,14 @@
 NinjaRunningState::NinjaRunningState(NinjaData *ninjaData)
 {
 	this->ninjaData = ninjaData;
-
+	this->ninjaData->ninja->allowMoveLeft = true;
+	this->ninjaData->ninja->allowMoveRight = true;
+	
 }
 
 void NinjaRunningState::Update(float dt)
 {
-	
+
 }
 
 
@@ -27,8 +29,8 @@ NinjaAnimations::eNinjaStates NinjaRunningState::GetState()
 void NinjaRunningState::HandleKeyboard(map<int, bool> keys)
 {
 
-
-	if (keys[DIK_RIGHT] && keys[DIK_LEFT]&& !keys[DIK_X])
+	
+	if (keys[DIK_RIGHT] && keys[DIK_LEFT])
 	{
 		this->ninjaData->ninja->SetVx(0.0f);
 		this->ninjaData->ninja->SetState(new NinjaIdlingState(ninjaData));
@@ -36,35 +38,24 @@ void NinjaRunningState::HandleKeyboard(map<int, bool> keys)
 
 	else if (keys[DIK_RIGHT])
 	{
-		if (keys[DIK_X] && this->ninjaData->ninja->allowRunAttack)
-		{
-			this->ninjaData->ninja->SetVx(0.0f);
-			this->ninjaData->ninja->SetState(new NinjaAttackingState(ninjaData));
-		}
-		else 
-		{
+		
 			this->ninjaData->ninja->SetReverse(false);
-			this->ninjaData->ninja->SetVx(100.0f);
-		}
+			this->ninjaData->ninja->SetVx(NINJA_RUNNING_SPEED);
+		
 
 	}
 	else if (keys[DIK_LEFT])
 	{
-		if (keys[DIK_X] && this->ninjaData->ninja->allowRunAttack)
-		{
-			this->ninjaData->ninja->SetVx(0.0f);
-			this->ninjaData->ninja->SetState(new NinjaAttackingState(ninjaData));
-		}
-		else
-		{
+
 			this->ninjaData->ninja->SetReverse(true);
-			this->ninjaData->ninja->SetVx(-100.0f);
-		}
+			this->ninjaData->ninja->SetVx(-NINJA_RUNNING_SPEED);
 
 	}
 	else
 	{
 		this->ninjaData->ninja->SetState(new NinjaIdlingState(ninjaData));
 	}
+
 }
+
 

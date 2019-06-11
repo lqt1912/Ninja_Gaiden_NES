@@ -2,36 +2,94 @@
 
 
 
+BoundingBox Bird2::GetBoundingBox()
+{
+	BoundingBox b;
+	b.x = this->x - this->width + 2;
+	b.y = this->y + this->height / 2;
+	b.vx = this->dx;
+	b.vy = this->dy;
+	b.w = this->width / 2;
+	b.h = this->height / 4;
+	return b;
+}
+
 Bird2::Bird2()
 {
-	birdAni = new Animation("Resources/Enemy1/bird-2.png", 2, 1, 2);
+	moveAni = new Animation("Resources/Enemy1/bird-2.png", 2, 1, 2, 0.05);
+	resetState();
+	this->SetWidth(currentAni->GetWidth());
+	this->SetHeight(currentAni->GetHeight());
+	srand(time(NULL));
+	s = (float)( 1.0*(rand()%6 + 2 )/10);
+	type = BIRD2_TYPE;
 }
 
 
 Bird2::~Bird2()
 {
 }
-void Bird2::Draw(D3DXVECTOR3 position, RECT sourceRect, D3DXVECTOR2 scale, D3DXVECTOR2 transform, float angle, D3DXVECTOR2 rotationCenter, D3DXCOLOR colorKey)
-{
-	
-	birdAni->SetPosition(this->GetPosition());
-	birdAni->Draw(D3DXVECTOR3(x, y, 0), RECT(), D3DXVECTOR2(), transform);
 
-}
+
 void Bird2::Update(float dt)
 {
+	if (!isFrozenEnemies)
+	{
+		if (x - Ninja::GetInstance()->getX() < 0)
+		{
+			this->setFlipVertical(false);
+		}
+		else
+			this->setFlipVertical(true);
+	}
+	if (GetPosition().x == getInitPosition().x)
+	{
+		if (isFlip == false && Ninja::GetInstance()->GetPosition().x - getInitPosition().x >= DISTANCE_APPEAR)
+		{
+			setActive(true);
+			x += 10;
+		}
+		else if (isFlip == true && -Ninja::GetInstance()->GetPosition().x + getInitPosition().x >= DISTANCE_APPEAR)
+		{
+			setActive(true);
+			x -= 10;
+		}
+		else
+			setActive(false);
+		x += 1;
+	}
+	
+	if(isActive)
+	{
+		Enemy::Update(dt);
 
-	birdAni->Update(dt);
-	Object::Update(dt);
+		if (x - Ninja::GetInstance()->GetPosition().x > 0 && rightToLeft)
+		{
+			this->moveTo(Ninja::GetInstance()->GetPosition().x - 50, Ninja::GetInstance()->GetPosition().y);
+		}
+		else if (x - Ninja::GetInstance()->GetPosition().x < 0 && !rightToLeft)
+		{
+			this->moveTo(Ninja::GetInstance()->GetPosition().x + 50, Ninja::GetInstance()->GetPosition().y);
+		}
+
+		if (s > 0.8)
+		{
+			if (x <= Ninja::GetInstance()->GetPosition().x - 30)
+			{
+				rightToLeft = false;
+				vx = -vx;
+			}
+			else if (x >= Ninja::GetInstance()->GetPosition().x + 30)
+			{
+				rightToLeft = true;
+				vx = -vx;
+			}
+			s = 0;
+		}
+		else
+			s += dt;
+		if (!Collision::GetInstance()->isCollision(Camera::getInstance()->GetBound(), GetBound()))
+			setActive(false);
+	}
 }
 
-RECT Bird2::GetBound()
-{
-	RECT rect;
-	rect.left = this->x - birdAni->GetWidth() / 2;
-	rect.right = rect.left + birdAni->GetWidth();
-	rect.top = this->y - birdAni->GetHeight() / 2;
-	rect.bottom = rect.top + birdAni->GetHeight();
-
-	return rect;
-}

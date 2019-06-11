@@ -4,7 +4,7 @@
 class NinjaAnimations
 {
 public:
-	NinjaAnimations();
+
 	~NinjaAnimations();
 
 	enum eNinjaStates
@@ -17,15 +17,20 @@ public:
 		Sitting,
 		Attack_Sitting,
 		Darting,
+		Injuring,
+		Dying,
+		Impacting,
+		Climbing,
+		Clinging,
 	};
 
-	void AddAnimation(eNinjaStates state,const char* filePath, int totalFrame, int rows, int columns, float timePerFrame = 0.1f, D3DCOLOR colorKey = NULL);
-	NinjaAnimations* GetInstance();
+	void AddAnimation(eNinjaStates state, const char* filePath, int totalFrame, int rows, int columns, float timePerFrame = 0.1f, D3DCOLOR colorKey = NULL);
+	static NinjaAnimations* GetInstance();
 	unordered_map<eNinjaStates, Animation*> mAni;
-	//int x = 0;
-private:
 
-	static NinjaAnimations *instance ;
-	
+private:
+	NinjaAnimations();
+	static NinjaAnimations* instance;
+
 };
 

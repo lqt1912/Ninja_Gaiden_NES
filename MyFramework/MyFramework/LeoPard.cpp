@@ -1,47 +1,99 @@
 #include "LeoPard.h"
-
+#include "Ninja.h"
 
 
 LeoPard::LeoPard()
 {
-	
-	leopardAni = new Animation("Resources/Enemy1/leopard.png",2,1,2,0.2);
+
+	moveAni = new Animation("Resources/Enemy1/leopard.png", 2, 1, 2, 0.25);
+	this->resetState();
+	this->SetWidth(currentAni->GetWidth());
+	this->SetHeight(currentAni->GetHeight());
+	SetVx(LEOPARD_SPEED);
+	type = LEOPARD_TYPE;
+	SetVy(-55);
 }
 
 
 LeoPard::~LeoPard()
 {
-}
-void LeoPard::Draw(D3DXVECTOR3 position, RECT sourceRect, D3DXVECTOR2 scale, D3DXVECTOR2 transform, float angle, D3DXVECTOR2 rotationCenter, D3DXCOLOR colorKey)
-{
-	//leopardAniAni->FlipVertical(true);
-	leopardAni->SetPosition(this->GetPosition());
-	leopardAni->Draw(D3DXVECTOR3(x, y, 0), RECT(),D3DXVECTOR2(),transform);
 
 }
+
 void LeoPard::Update(float dt)
 {
-	////DebugOut((wchar_t*)L"dt = %f \n", dt);
-	//float dxx = this->getX() + 200;
-	//float dyy = this->getY() - 100;
-	//float length = sqrt(dxx*dxx + dyy * dyy);
-	//dxx /= length;
-	//dyy /= length;
-	//dxx *= 20;
-	//dyy *= 20;
-	//this->SetVx(dxx);
-	//this->SetVy(dyy);
-	leopardAni->Update(dt);
-	Object::Update(dt);
+
+	if (Collision::GetInstance()->CollisionAABB(this->GetBoundingBox(), curGround))
+	{
+		if (y < this->getInitPosition().y + 14)
+			y += 4;
+	}
+	if (y < 0)
+	{
+		setActive(false);
+		this->Respawn();
+	}
+
+	if (GetPosition().x == getInitPosition().x)
+	{
+		if (isFlip == false && Ninja::GetInstance()->GetPosition().x - getInitPosition().x >= DISTANCE_APPEAR)
+		{
+			SetVx(LEOPARD_SPEED);
+			setActive(true);
+			x += 10;
+		}
+		else if (isFlip == true && -Ninja::GetInstance()->GetPosition().x + getInitPosition().x >= DISTANCE_APPEAR)
+		{
+			SetVx(-LEOPARD_SPEED);
+			setActive(true);
+			x -= 10;
+		}
+		else
+			setActive(false);
+		x += 1;
+	}
+	if (!Collision::GetInstance()->isCollision(Camera::getInstance()->GetBound(), this->GetBound()))
+	{
+		Reset(getInitPosition());
+	}
+	Enemy::Update(dt);
+}
+bool LeoPard::detectGroundA(vector<BoundingBox> grounds)
+{
+	BoundingBox ninjaBox = this->GetBoundingBox();
+
+	// neu dang o ground cu thi return
+	if (Collision::GetInstance()->CollisionAABB(ninjaBox, curGround))
+		return true;
+	// neu khong co ground thi kiem tra ground moi
+	for (auto g : grounds)
+	{
+		g.y -= 15;
+		if (Collision::GetInstance()->CollisionAABB(ninjaBox, g))
+		{
+			curGround = g;
+			return true;
+		}
+	}
+	return false;
 }
 
-RECT LeoPard::GetBound()
+void LeoPard::OnCollisionWithGroundA(vector<BoundingBox> grounds)
 {
-	RECT rect;
-	rect.left = this->x - leopardAni->GetWidth() / 2;
-	rect.right = rect.left + leopardAni->GetWidth();
-	rect.top = this->y - leopardAni->GetHeight() / 2;
-	rect.bottom = rect.top + leopardAni->GetHeight();
+	// tim ground va cham 
+	if (detectGroundA(grounds))
+	{
+		if (this->vy < 0 && Collision::GetInstance()->CollisionAABB(this->GetBoundingBox(), curGround))
+		{
+			this->vy = this->dy = 0;
+			this->y = curGround.y + ((int)(this->height) >> 1) - 16;
+		}
+	}
+	// neu khong thi roi 
+	else if (!this->vy)
+	{
+		y += 16;
+		vy = -100;
+	}
 
-	return rect;
 }

@@ -5,43 +5,68 @@
 EnemyGreenGun::EnemyGreenGun()
 {
 
-	enemyAni = new Animation("Resources/Enemy1/green_enemy_with_gun_walk.png", 2, 1, 2);
+	moveAni = new Animation("Resources/Enemy1/green_enemy_with_gun_walk.png", 2, 1, 2,0.2);
+	attackAni = new Animation("Resources/Enemy1/green_enemy_attack.png", 2, 1, 2, 0.1);
+	this->resetState();
+
+	type = GREEN_GUN_TYPE;
 }
 
 
 EnemyGreenGun::~EnemyGreenGun()
 {
 }
-void EnemyGreenGun::Draw(D3DXVECTOR3 position, RECT sourceRect, D3DXVECTOR2 scale, D3DXVECTOR2 transform, float angle, D3DXVECTOR2 rotationCenter, D3DXCOLOR colorKey)
+BoundingBox EnemyGreenGun::GetBoundingBox()
 {
-	//EnemyGreenGunAniAni->FlipVertical(true);
-	enemyAni->SetPosition(this->GetPosition());
-	enemyAni->Draw(D3DXVECTOR3(x, y, 0), RECT(), D3DXVECTOR2(), transform);
-
+	BoundingBox b;
+	b.x = this->x - this->width / 2 - 4;
+	b.y = this->y + this->height / 2;
+	b.vx = this->dx;
+	b.vy = this->dy;
+	b.w = this->width / 2;
+	b.h = this->height;
+	return b;
 }
 void EnemyGreenGun::Update(float dt)
 {
-	//DebugOut((wchar_t*)L"dt = %f \n", dt);
-	/*float dxx = this->getX() -50;
-	float dyy = this->getY() - 100;
-	float length = sqrt(dxx*dxx + dyy * dyy);
-	dxx /= length;
-	dyy /= length;
-	dxx *= 20;
-	dyy *= 20;
-	this->SetVx(dxx);*/
-	//this->SetVy(dyy);
-	enemyAni->Update(dt);
-	Object::Update(dt);
+
+	
+	if (Ninja::GetInstance()->GetPosition().x - x < 0)
+	{
+		setFlipVertical(true);
+		vx = -GREENGUN_SPEED;
+	}
+	else
+	{
+		setFlipVertical(false);
+		vx = GREENGUN_SPEED;
+	}
+
+	if (currentAni == moveAni)
+	{
+		if (s > 1.6)
+		{
+			isAttacking = true;
+			currentAni = attackAni;
+			s = 0;
+		}
+		else
+		{
+			s += dt;
+		}
+	}
+	else if (currentAni == attackAni)
+	{
+		if (s > 0.6)
+		{
+			currentAni = moveAni;
+			s = 0;
+		}
+		else
+		{
+			s += dt;
+		}
+	}
+	Enemy::Update(dt);
 }
 
-RECT EnemyGreenGun::GetBound()
-{
-	RECT rect;
-	rect.left = this->x - enemyAni->GetWidth() / 2;
-	rect.right = rect.left + enemyAni->GetWidth();
-	rect.top = this->y - enemyAni->GetHeight() / 2;
-	rect.bottom = rect.top + enemyAni->GetHeight();
-
-	return rect;
-}

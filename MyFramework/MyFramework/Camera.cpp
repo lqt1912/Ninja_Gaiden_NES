@@ -1,13 +1,25 @@
 #include "Camera.h"
 #include "Debug.h"
 
+#include "GameGlobal.h"]
+Camera* Camera::_instance = NULL;
 Camera::Camera(int width, int height)
+
 {
 	mWidth = width;
 	mHeight = height;
-	mPosition = D3DXVECTOR3(0, 0, 0);
+	mPosition = D3DXVECTOR3(0, 208, 0);
 }
+Camera* Camera::getInstance()
+{
+	if (!_instance)
+		_instance = new Camera(SCREEN_WIDTH, SCREEN_HEIGHT);
+	return _instance;
+}
+Camera::Camera()
+{
 
+}
 
 Camera::~Camera()
 {
@@ -17,6 +29,20 @@ Camera::~Camera()
 void Camera::Update(D3DXVECTOR3 dt)
 {
 	
+
+}
+
+void Camera::ConvertFromViewportToWorldport(D3DXVECTOR3& position)
+{
+	D3DXMATRIX mt;
+	D3DXMatrixIdentity(&mt);
+	mt._22 = -1;
+	mt._41 = -this->GetPosition().x;
+	mt._42 = this->GetPosition().y;
+	D3DXVECTOR4 vp_pos;
+
+	D3DXVec3Transform(&vp_pos, &position, &mt);
+	position = D3DXVECTOR3(vp_pos.x, vp_pos.y, 0);
 
 }
 
@@ -41,13 +67,10 @@ RECT Camera::GetBound()
 {
 	RECT bound;
 
-	bound.left = mPosition.x - mWidth / 2;
-	//DebugOut((wchar_t*)L"left= %d ", bound.left);
+	bound.left = mPosition.x ;
 	bound.right = bound.left + mWidth;
-	bound.top = mPosition.y - mHeight / 2;
-	//DebugOut((wchar_t*)L"top = %d ", bound.top);
-	bound.bottom = bound.top + mHeight;
-	//DebugOut((wchar_t*)L"bot = %d ", bound.bottom);
+	bound.top = mPosition.y ;
+	bound.bottom = bound.top - mHeight;
 
 	return bound;
 }
@@ -57,7 +80,7 @@ void Camera::SetPosition(float x)
 	this->SetPosition(this->GetPosition() + D3DXVECTOR3(x, 0, 0));
 }
 
-void Camera::setX(int x)
+void Camera::setX(float x)
 {
 	this->mPosition.x = x;
 }

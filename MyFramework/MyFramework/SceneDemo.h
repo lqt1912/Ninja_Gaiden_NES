@@ -3,62 +3,79 @@
 #include <math.h>
 #include <vector>
 #include "GameGlobal.h"
-#include "Sprite.h"
 #include "Animation.h"
 #include "TiledMap.h"
-#include "Dart.h"
-#include "Butterfly.h"
-#include "LeoPard.h"
 #include "EnemyBrownKnife.h"
-#include "EnemyPinkWalk.h"
-#include "Bat2.h"
-#include "EnemyGreenGun.h"
-#include "Grid.h"
-
+#include "Game_UI.h"
+#include "GameDebugDraw.h"
+#include "Ninja.h"
+#include "Collision.h"
+#include "Weapon.h"
+#include "Knife.h"
+#include "Star.h"
+#include "WindmillStar.h"
+#include "FireWheel.h"
+#include "SwordOfPink.h"
+#include "Bullet.h"
 using namespace std;
+
 class SceneDemo :
 	public Scene
 {
 public:
-	SceneDemo();
-	~SceneDemo();
 
-	void Update(float dt);
-	void LoadContent();
-	void Draw();
+
+	//Keyboard handling
 	void OnKeyDown(int KeyCode);
 	void OnKeyUp(int KeyCode);
+
 	void LoadMap();
-	 TiledMap* map;
 
-	 Grid* grid;
+	
+	 bool isCollision(RECT rect1, RECT rect2);
 
-	 Camera* getCamera();
+	 //Update
+	 void Update(float dt);
+	 void UpdateWeapon(float dt);
 
-	 int isCollision(RECT r1, RECT r2)
+	 void Draw();
+
+	 void InitGrid();
+
+	 RECT BoxToRect(BoundingBox b)
 	 {
-		 RECT dest;
-		 return IntersectRect(&dest, &r1, &r2);
+		 RECT r;
+		 r.top = b.y + b.h;
+		 r.left = b.x;
+		 r.bottom = b.y;
+		 r.right = r.left + b.w;
+		 return r;
 	 }
-
+	 
+	 SceneDemo();
+	 SceneDemo(int level);
+	 ~SceneDemo();
+	 int level = 1;
 protected:
 
-	vector<Sprite* > sprites;
+	
+
+	//Scene's parameters
+	TiledMap* map;
+	Grid* grid;
+	Game_UI* gui;
 	Ninja *ninja;
-	float mTimeCounter;
-	int key;
-	std::map<int, bool> keys;
 	Camera* mCamera;
-
-	// ENEMY
-	Butterfly* eButterfly;
-	LeoPard* eLeopard;
-	EnemyBrownKnife* eBrownKnife;
-	EnemyPinkWalk* ePinkWalk;
-	Bird2* eBird;
-	Bat2* eBat;
-	EnemyGreenGun* eGreenGun;
-
+	Weapon* weapon;
+	Knife* knife;
+	unordered_set<Object*> lstWeaponEnemy;
+	vector<Object*> lstColiableObject;
+	int timer;
+	float mTimeCounter;
+	std::map<int, bool> keys;
 	vector<Object*> lstEnemies;
+
+	Animation* GameOver;
+	Animation* GameWin;
 };
 

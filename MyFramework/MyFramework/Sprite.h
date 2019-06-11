@@ -5,6 +5,7 @@
 
 #include "GameGlobal.h"
 
+
 class Sprite
 {
 public:

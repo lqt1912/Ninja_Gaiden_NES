@@ -1,0 +1,5 @@
+﻿  Ninja.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+D:\NGD_Sound\MyFramework\Ninja.cpp(418): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\NGD_Sound\MyFramework\Ninja.cpp(423): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  MyFramework.vcxproj -> D:\NGD_Sound\Debug\MyFramework.exe

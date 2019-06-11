@@ -10,7 +10,6 @@ public:
 
 	virtual void OnKeyDown(int KeyCode);
 	virtual void OnKeyUp(int KeyCode);
-	//virtual void OnMouseDown(float x, float y);
 
 	D3DCOLOR GetBackColor();
 

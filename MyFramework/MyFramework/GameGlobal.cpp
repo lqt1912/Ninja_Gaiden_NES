@@ -3,11 +3,14 @@
 HINSTANCE GameGlobal::hInstance = NULL;
 HWND GameGlobal::hWnd = NULL;
 LPD3DXSPRITE GameGlobal::spriteHandler = NULL;
-int GameGlobal::screenheight =208;
-int GameGlobal::screenwidth = 250;
+int GameGlobal::screenheight =SCREEN_HEIGHT;
+int GameGlobal::screenwidth = SCREEN_WIDTH;
 LPDIRECT3DDEVICE9 GameGlobal::d3ddv = nullptr;
 bool GameGlobal::isRunning = true;
 IDirect3DSurface9* GameGlobal::backSurface = nullptr;
+
+bool isFrozenEnemies = false;
+float frozenTime = FROZEN_TIME;
 
 GameGlobal::GameGlobal()
 {

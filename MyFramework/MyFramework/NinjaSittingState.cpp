@@ -5,6 +5,7 @@
 NinjaSittingState::NinjaSittingState(NinjaData *ninjaData)
 {
 	this->ninjaData = ninjaData;
+	ninjaData->ninja->isSitting = true;
 }
 
 
@@ -25,11 +26,9 @@ void NinjaSittingState::HandleKeyboard(map<int, bool> keys)
 		NinjaState* newState = new NinjaIdlingState(ninjaData);
 		this->ninjaData->ninja->SetState(newState);
 	}
-	//else if (keys[DIK_DOWN] && keys[DIK_X] && this->ninjaData->ninja->allowSitAttack)
-	//{
-	//	NinjaState* newState = new NinjaAttackSittingState(ninjaData);
-	//	this->ninjaData->ninja->SetState(newState);
-	//}
 
-	
+}
+void NinjaSittingState::OnCollision(Object* impactor, Object::SideCollisions side, Object::ResultCollision data)
+{
+
 }

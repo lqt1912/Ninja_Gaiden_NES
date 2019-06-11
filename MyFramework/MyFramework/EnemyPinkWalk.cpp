@@ -1,47 +1,60 @@
 #include "EnemyPinkWalk.h"
 
 
-
 EnemyPinkWalk::EnemyPinkWalk()
 {
-	
-	enemyAni = new Animation("Resources/Enemy1/enemy_pink_walk.png", 2, 1, 2);
+	moveAni = new Animation("Resources/Enemy1/enemy_pink_walk.png", 2, 1, 2,0.2);
+	attackAni = new Animation("Resources/Enemy1/enemy_pink_attack.png", 3, 1, 3,0.2);
+	currentAni = moveAni;
+	vx = PINKWALK_SPEED;
+	isAttacking = false;
+	type = PINK_WALK_TYPE;
 }
 
 
 EnemyPinkWalk::~EnemyPinkWalk()
 {
 }
-void EnemyPinkWalk::Draw(D3DXVECTOR3 position, RECT sourceRect, D3DXVECTOR2 scale, D3DXVECTOR2 transform, float angle, D3DXVECTOR2 rotationCenter, D3DXCOLOR colorKey)
-{
-	//EnemyPinkWalkAniAni->FlipVertical(true);
-	enemyAni->SetPosition(this->GetPosition());
-	enemyAni-> Draw(D3DXVECTOR3(x, y, 0), RECT(), D3DXVECTOR2(), transform);
 
-}
 void EnemyPinkWalk::Update(float dt)
 {
-	//DebugOut((wchar_t*)L"dt = %f \n", dt);
-	/*float dxx = this->getX() -50;
-	float dyy = this->getY() - 100;
-	float length = sqrt(dxx*dxx + dyy * dyy);
-	dxx /= length;
-	dyy /= length;
-	dxx *= 20;
-	dyy *= 20;
-	this->SetVx(dxx);*/
-	//this->SetVy(dyy);
-	enemyAni->Update(dt);
-	Object::Update(dt);
-}
+	if (isFrozenEnemies == false)
+	{
+		this->MoveBetween(this->firstPositionx, this->lastPositionX);
+		if (Ninja::GetInstance()->GetPosition().x - x < 0)
+			setFlipVertical(true);
+		else
+			setFlipVertical(false);
+	}
 
-RECT EnemyPinkWalk::GetBound()
-{
-	RECT rect;
-	rect.left = this->x - enemyAni->GetWidth() / 2;
-	rect.right = rect.left + enemyAni->GetWidth();
-	rect.top = this->y - enemyAni->GetHeight() / 2;
-	rect.bottom = rect.top + enemyAni->GetHeight();
+	if (currentAni == moveAni && isFrozenEnemies == false)
+	{
+		if (s >1.4)
+		{
+			isAttacking = false;
+			currentAni = attackAni;
+			s = 0;
+		}
+		else
+		{
+			s += dt;
+		}
+	}
+	else if(currentAni == attackAni && isFrozenEnemies == false)
+	{
+		if (s > 0.4)
+		{
+			isAttacking = true;
+			currentAni = moveAni;
+			s = 0;
+		}
+		else
+		{
+			s += dt;
+		}
+	}
 
-	return rect;
+
+	Enemy::Update(dt);
+
 }

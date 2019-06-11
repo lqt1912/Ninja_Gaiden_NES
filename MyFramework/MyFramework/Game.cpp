@@ -4,14 +4,12 @@
 #include "SceneDemo.h"
 
 
-
 Game::Game(int fps)
 {
 	this->fps = fps;
-	SceneManager::GetInstance()->ReplaceScene(new SceneDemo());
+	SceneManager::GetInstance()->ReplaceScene(new SceneDemo(2));
 	InitKeyboard();
 	InitLoop();
-
 }
 
 Game::~Game()
@@ -135,11 +133,8 @@ void Game::InitKeyboard()
 	hr = didv->Acquire();
 	if (hr != DI_OK)
 	{
-		//DebugOut((wchar_t*)L"[ERROR] DINPUT8::Acquire failed!\n");
 		return;
 	}
-	//DebugOut((wchar_t*)L"[INFO] Keyboard has been initialized successfully\n");
-
 }
 
 
@@ -160,15 +155,9 @@ void Game::Processkeyboard()
 		if ((hr == DIERR_INPUTLOST) || (hr == DIERR_NOTACQUIRED))
 		{
 			HRESULT h = didv->Acquire();
-			/*if (h == DI_OK)
-			{
-			DebugOut((wchar_t*)L"[INFO] Keyboard re-acquired!\n");
-			}
-			else return;*/
 		}
 		else
 		{
-			//DebugOut(L"[ERROR] DINPUT::GetDeviceState failed. Error: %d\n", hr);
 			return;
 		}
 	}
@@ -180,7 +169,6 @@ void Game::Processkeyboard()
 	hr = didv->GetDeviceData(sizeof(DIDEVICEOBJECTDATA), keyEvents, &dwElements, 0);
 	if (FAILED(hr))
 	{
-		//DebugOut(L"[ERROR] DINPUT::GetDeviceData failed. Error: %d\n", hr);
 		return;
 	}
 
@@ -208,6 +196,5 @@ void Game::OnKeyUp(int KeyCode)
 }
 void Game::OnKeyDown(int KeyCode)
 {
-	//KeyState[KeyCode] = true;
 	SceneManager::GetInstance()->GetCurrentScene()->OnKeyDown(KeyCode);
 }
