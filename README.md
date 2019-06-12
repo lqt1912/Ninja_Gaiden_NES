@@ -1,2 +1,2 @@
-# Ninja_Gaiden_NES
-Ninja Gaiden NES GameUIT
+# Đồ án nhập môn phát triển Game - ĐH CNTT - ĐHQG TPHCM
+Ninja Gaiden NES
