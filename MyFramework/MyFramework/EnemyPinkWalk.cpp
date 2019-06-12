@@ -9,6 +9,7 @@ EnemyPinkWalk::EnemyPinkWalk()
 	vx = PINKWALK_SPEED;
 	isAttacking = false;
 	type = PINK_WALK_TYPE;
+	scored = SCORE_3;
 }
 
 

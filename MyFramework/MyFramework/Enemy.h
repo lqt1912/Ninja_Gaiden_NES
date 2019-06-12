@@ -18,6 +18,7 @@ public:
 	virtual void OnCollisionWithGroundA(vector<BoundingBox> grounds);
 	virtual	BoundingBox GetBoundingBox();
 	bool isDead;
+	int scored;
 
 protected:
 	Animation* currentAni, * moveAni, * destroyedAni;

@@ -33,7 +33,7 @@ public:
 	void MinusEnemyHealth();
 	void PlusEnemyHealth();
 
-
+	void setNinjahealth(int a);
 	string ConvertTostring(vector<Animation* > vt);
 	vector<Animation* > ConvertToVector(string s);
 

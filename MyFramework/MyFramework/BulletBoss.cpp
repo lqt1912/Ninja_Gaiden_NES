@@ -7,8 +7,8 @@ BulletBoss::BulletBoss()
 	moveAni = new Animation("Resources/Enemy1/bullet_boss.png", 1, 1, 1);
 	currentAni = moveAni;
 
-	SetHeight(currentAni->GetHeight() );
-	SetWidth(currentAni->GetWidth() );
+	SetHeight(BUllET_HEIGHT);
+	SetWidth(BULLET_WIDTH);
 	setActive(true);
 	SetVy(0);
 }

@@ -5,8 +5,8 @@
 Star::Star()
 {
 	ani = new Animation("Resources/Ninja/star.png", 2, 1, 2,0.08);
-	SetHeight(ani->GetHeight()-4);
-	SetWidth(ani->GetWidth()-4);
+	SetHeight(ani->GetHeight());
+	SetWidth(ani->GetWidth());
 	SetVy(0);
 	if (Ninja::GetInstance()->mCurrentReverse )
 		SetVx(-80);

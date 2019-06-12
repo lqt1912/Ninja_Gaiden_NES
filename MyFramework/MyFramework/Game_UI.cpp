@@ -72,15 +72,9 @@ void Game_UI::Draw(D3DXVECTOR3 position, RECT sourceRect, D3DXVECTOR2 scale, D3D
 		life[i]->Draw(position + D3DXVECTOR3(i * 10 - 120, +10, 0));
 }
 
-float s1 = 0;
 void Game_UI::Update(float dt)
 {
-	if (s1>= 1.0f)
-	{	
-		MinusTimer();
-		s1 = 0;
-	}
-	else s1 = s1 + dt ;
+
 }
 void Game_UI::MinusNinjaHealth()
 {
@@ -107,7 +101,14 @@ void Game_UI::ResetHealth()
 	for (int i = 0; i < 16; i++)
 		ninja.push_back(Healths[0]);
 }
-
+void Game_UI::setNinjahealth(int a)
+{
+	ninja.clear();
+	for (int i = 0; i < a; i++)
+		ninja.push_back(Healths[0]);
+	for (int i = a; i < 16; i++)
+		ninja.push_back(Healths[1]);
+}
 void Game_UI::MinusEnemyHealth()
 {
 	int a = 0;
@@ -156,6 +157,7 @@ void Game_UI::MinusTimer()
 
 void Game_UI::InitTimer(int time)
 {
+	timer.clear();
 	int temp = time;
 
 	int a = temp /100;

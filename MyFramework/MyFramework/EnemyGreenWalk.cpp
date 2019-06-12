@@ -10,6 +10,7 @@ EnemyGreenWalk::EnemyGreenWalk()
 	SetVx(GREENWALK_SPEED);
 	SetVy(-10);
 	type = GREEN_WALK_TYPE;
+	scored = SCORE_3;
 }
 
 
@@ -36,11 +37,13 @@ void EnemyGreenWalk::Update(float dt)
 		{
 			SetVx(GREENWALK_SPEED);
 			setActive(true);
+			x += 10;
 		}
 		else if (isFlip == true && -Ninja::GetInstance()->GetPosition().x + x >= 70)
 		{
 			SetVx(-GREENWALK_SPEED);
 			setActive(true);
+			x -= 10;
 		}
 		else
 			setActive(false);
@@ -82,7 +85,7 @@ void EnemyGreenWalk::OnCollisionWithGroundA(vector<BoundingBox> grounds)
 	// neu khong thi roi 
 	else if (!this->vy)
 	{
-		y += 28;
+		y += 16;
 		vy = -100;
 	}
 	BoundingBox ninjaBox = GetBoundingBox();

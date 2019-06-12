@@ -32,7 +32,7 @@ void Holder::setFlipVertical(bool isFlip)
 BoundingBox Holder::GetBoundingBox()
 {
 	BoundingBox b;
-	b.x = this->x - this->width/2;
+	b.x = this->x - this->width;
 	b.y = this->y + this->height/2 ;
 	b.vx = this->dx;
 	b.vy = this->dy;

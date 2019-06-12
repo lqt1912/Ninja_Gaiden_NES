@@ -6,7 +6,7 @@ BoundingBox Bird2::GetBoundingBox()
 {
 	BoundingBox b;
 	b.x = this->x - this->width + 2;
-	b.y = this->y + this->height / 2;
+	b.y = this->y + this->height / 2 - 4;
 	b.vx = this->dx;
 	b.vy = this->dy;
 	b.w = this->width / 2;
@@ -21,8 +21,10 @@ Bird2::Bird2()
 	this->SetWidth(currentAni->GetWidth());
 	this->SetHeight(currentAni->GetHeight());
 	srand(time(NULL));
-	s = (float)( 1.0*(rand()%6 + 2 )/10);
+	/*s = (float)( 1.0*(rand()%6 + 2 )/10);*/
+	s = 0.9;
 	type = BIRD2_TYPE;
+	scored = SCORE_3;
 }
 
 

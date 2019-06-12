@@ -7,8 +7,8 @@ Bullet::Bullet()
 	moveAni = new Animation("Resources/Enemy1/bullet.png", 1, 1, 1);
 	currentAni = moveAni;
 
-	SetHeight(currentAni->GetHeight() + 2 );
-	SetWidth(currentAni->GetWidth() - 4 );
+	SetHeight(BUllET_HEIGHT );
+	SetWidth(BULLET_WIDTH);
 	setActive(true);
 	SetVy(0);
 }

@@ -28,7 +28,7 @@
 
 //Ninja jump
 #define NINJA_JUMP_VX 45.0f
-#define NINJA_JUMP_HEIGHT 200.0f
+#define NINJA_JUMP_HEIGHT 180.0f
 #define NINJA_ACE_X 6.0f
 #define NINJA_ACE_Y 6.0f
 
@@ -50,6 +50,11 @@
 #define WINDMILLSTAR_LIMIT_SPIRIT 5
 #define FIREWHEEL_LIMIT_SPIRIT 5
 
+#define SPIRIT_BLUE 5
+#define SPIRIT_RED 10
+#define BONUS_RED 1000
+#define BONUS_BLUE 500
+#define BONUS_PHYSICAL 6
 
 //===HOLDER & ENEMIES===
 
@@ -72,19 +77,21 @@
 #define BOSS_WIDTH 32
 #define BOSS_HEIGHT 48
 
+#define BROWN_KNIFE_SPEED 20.0f
+
 #define GREENGUN_SPEED 10.0f
 #define BULLET_PER_TIME 3
 
 #define GREENWALK_SPEED 100.0f
 #define PINKWALK_SPEED 20.0f
 
-#define LEOPARD_SPEED 100.0f
+#define LEOPARD_SPEED 90.0f
 #define DISTANCE_APPEAR 70
 #define FROZEN_TIME 5
 
 #define BIRD_SPEED 50;
 
-#define CHECKPOINT_1 2000
+#define CHECKPOINT_1 2100
 #define CHECKPOINT_2 3100
 
 #define SCORE_1 100
@@ -93,6 +100,11 @@
 #define BULLET_BOSS_SCORE 100
 #define BOSS_SCORE 2000
 
+#define BULLET_WIDTH 10
+#define BUllET_HEIGHT 12
+
+#define BULLET_BAZOOKA_SPEED 80
+#define BULLET_BOSS_SPEED 80
 
 extern bool isFrozenEnemies;
 extern float frozenTime;

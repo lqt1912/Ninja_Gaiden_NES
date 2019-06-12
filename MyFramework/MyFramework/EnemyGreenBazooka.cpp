@@ -7,9 +7,10 @@ EnemyGreenBazooka::EnemyGreenBazooka()
 	moveAni = new Animation("Resources/Enemy1/green_bazooka.png", 1, 1, 1);
 	attackAni = new Animation("Resources/Enemy1/green_bazooka_attack.png", 2, 1, 2, 0.1);
 	this->resetState();
-
+	s = 1.4;
 	vx = 0;
 	type = GREEN_BAZOOKA_TYPE;
+	scored = SCORE_2;
 }
 
 
@@ -30,7 +31,7 @@ void EnemyGreenBazooka::Update(float dt)
 
 	if (currentAni == moveAni)
 	{
-		if (s > 1.6)
+		if (s > 3)
 		{
 			isAttacking = true;
 			currentAni = attackAni;

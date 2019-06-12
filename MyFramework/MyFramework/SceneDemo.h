@@ -55,7 +55,7 @@ public:
 	 SceneDemo();
 	 SceneDemo(int level);
 	 ~SceneDemo();
-	 int level = 1;
+	 int currentLevel = 1;
 protected:
 
 	

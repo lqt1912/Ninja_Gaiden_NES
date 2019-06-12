@@ -26,7 +26,7 @@ void Item::DetectGround(vector<Object*> listGround)
 	for (auto g : listGround)
 	{
 		b = g->GetBoundingBox();
-		b.h = b.h /4;
+		b.h = b.h /2;
 		if (Collision::GetInstance()->CollisionAABB(this->GetBoundingBox(),b))
 		{
 			boundGround = g->GetBoundingBox();
@@ -40,7 +40,7 @@ void Item::DetectGroundA(vector<BoundingBox> listGround)
 
 	for (auto g : listGround)
 	{
-		g.y -= 8;
+		g.y -= 4;
 		if (Collision::GetInstance()->CollisionAABB(this->GetBoundingBox(), g))
 		{
 			boundGround = g;

@@ -12,6 +12,7 @@ LeoPard::LeoPard()
 	SetVx(LEOPARD_SPEED);
 	type = LEOPARD_TYPE;
 	SetVy(-55);
+	scored = SCORE_3;
 }
 
 
@@ -92,7 +93,7 @@ void LeoPard::OnCollisionWithGroundA(vector<BoundingBox> grounds)
 	// neu khong thi roi 
 	else if (!this->vy)
 	{
-		y += 16;
+		y += 24;
 		vy = -100;
 	}
 

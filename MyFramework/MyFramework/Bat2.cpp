@@ -11,6 +11,7 @@ Bat2::Bat2()
 	vx = 80;
 	vy = 100;
 	type = BAT_TYPE;
+	scored = SCORE_1;
 }
 
 

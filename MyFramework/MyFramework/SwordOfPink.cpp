@@ -7,8 +7,8 @@ SwordOfPink::SwordOfPink()
 	moveAni = new Animation("Resources/Enemy1/weapon_pink.png", 4, 1, 4);
 	currentAni = moveAni;
 	setActive(true);
-	SetHeight(currentAni->GetHeight() + 6);
-	SetWidth(currentAni->GetWidth()+6);
+	SetHeight(currentAni->GetHeight() );
+	SetWidth(currentAni->GetWidth());
 	SetVy(100);
 }
 

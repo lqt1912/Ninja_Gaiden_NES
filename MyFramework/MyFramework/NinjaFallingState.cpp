@@ -68,13 +68,13 @@ void NinjaFallingState::HandleKeyboard(map<int, bool> keys)
 		{
 			ninjaData->ninja->SetReverse(false);
 
-			this->ninjaData->ninja->SetVx(NINJA_JUMP_VX);
+			this->ninjaData->ninja->SetVx(NINJA_JUMP_VX + 20);
 			noPressed = false;
 		}
 		else if (keys[DIK_LEFT])
 		{
 			ninjaData->ninja->SetReverse(true);
-			this->ninjaData->ninja->SetVx(-NINJA_JUMP_VX);
+			this->ninjaData->ninja->SetVx(-NINJA_JUMP_VX - 20);
 			noPressed = false;
 		}
 		else

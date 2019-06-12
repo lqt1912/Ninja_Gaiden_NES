@@ -16,6 +16,7 @@ BrownBoss::BrownBoss()
 	count = 2;
 	blood = 16;
 	type = BROWN_BOSS_TYPE;
+	scored =SCORE_3;
 }
 
 
@@ -89,7 +90,7 @@ void BrownBoss::Update(float dt)
 				{
 					s = 0;
 					isActive = false;
-					Ninja::GetInstance()->AddScore(20);
+					Ninja::GetInstance()->AddScore(scored);
 					//SetPosition(D3DXVECTOR2(-100, -100));
 				}
 			}

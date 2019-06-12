@@ -10,6 +10,7 @@ Enemy::Enemy()
 	this->SetWidth(ENEMY_WIDTH);
 	this->SetHeight(ENEMY_HEIGHT);
 	s = 0;
+	scored = 0;
 }
 
 
@@ -36,11 +37,11 @@ BoundingBox Enemy::GetBoundingBox()
 {
 	BoundingBox b;
 	b.x = this->x - this->width / 2;
-	b.y = this->y + this->height / 2;
+	b.y = this->y + this->height / 2 - 4;
 	b.vx = this->dx;
 	b.vy = this->dy;
 	b.w = this->width / 2;
-	b.h = this->height;
+	b.h = this->height /2;
 	return b;
 }
 
@@ -77,7 +78,7 @@ void Enemy::Update(float dt)
 			{
 				s = 0;
 				isActive = false;
-				Ninja::GetInstance()->AddScore(20);
+				Ninja::GetInstance()->AddScore(scored);
 				//SetPosition(D3DXVECTOR2(-100, -100));
 			}
 		}
@@ -85,7 +86,6 @@ void Enemy::Update(float dt)
 		if (currentAni == destroyedAni)
 		{
 			currentAni->Update(dt);
-			SetPosition(x + dx, y + dy);
 		}
 		if (isFrozenEnemies == true)
 			return;

@@ -6,6 +6,7 @@
 #include "GameSound.h"
 SceneDemo::SceneDemo(int level)
 {
+	currentLevel = level;
 	GameWin = new Animation("Resources/UI/GameWin.png", 1, 1, 1);
 	GameOver = new Animation("Resources/UI/GameOver.png", 1, 1, 1);
 	timer = 300;
@@ -16,7 +17,7 @@ SceneDemo::SceneDemo(int level)
 
 	//Ninja's instance call
 	ninja = Ninja::GetInstance();
-	ninja->SetPosition((D3DXVECTOR3(935, 100, 0)));
+	ninja->SetPosition((D3DXVECTOR3(930, 200, 0)));
 
 	grid = new Grid();
 	//Load map with level 
@@ -87,8 +88,18 @@ SceneDemo::~SceneDemo()
 	if(grid)
 		delete grid;	
 }
+float s1 = 0;
 void SceneDemo::Update(float dt)
 {
+
+	if(s1 >= 1.0f)
+	{
+		timer--;
+		gui->InitTimer(timer);
+		s1 = 0;
+	}
+	else s1 = s1 + dt;
+
 	if (isFrozenEnemies)
 	{
 		if (frozenTime > 0)
@@ -140,7 +151,7 @@ void SceneDemo::Update(float dt)
 			ninja->OnCollisionWithWall(grid->lstWall);
 
 	if (grid->lstLadder.size() > 0)
-		if (ninja->GetState() == NinjaAnimations::Jumping || ninja->GetState() == NinjaAnimations::Falling)
+		if (ninja->GetState() == NinjaAnimations::Jumping || ninja->GetState() == NinjaAnimations::Falling || ninja->GetState() == NinjaAnimations::Running)
 			ninja->OnCollisionWithLadder(grid->lstLadder);
 		else if (ninja->GetState() == NinjaAnimations::Injuring && !ninja->isOnWall)
 			ninja->OnCollisionWithLadder(grid->lstLadder);
@@ -167,7 +178,7 @@ void SceneDemo::Update(float dt)
 		ninja->setX(map->getWidth());
 
 	//Grid update
-	if (ninja->GetPosition().x < 20)
+	if (ninja->GetPosition().y < 20)
 	{
 		//if (isFrozenEnemies == true)
 		//	isFrozenEnemies = false;
@@ -180,26 +191,25 @@ void SceneDemo::Update(float dt)
 	gui->setScore(ninja->score);
 	gui->setSpirit(ninja->spirit);
 	gui->Update(dt);
+	gui->setNinjahealth(ninja->physical);
+	gui->setLife(ninja->life);
 
-	//checkpoint 
-	if (ninja->physical <= 0)
+	//Reset khi Physical còn 0, trừ 1 life, physical tăng lại 16
+	if (ninja->physical <= 0 || ninja->GetPosition().y < 20)
 	{
-		ninja->physical = 16;	
-		Game_UI::getInstance()->ResetHealth();
+		ninja->physical = 16;
 		ninja->life--;
-		Game_UI::getInstance()->setLife(ninja->life);
-
 		ninja->Reset();
 		for (auto e : grid->getBaseEnemiesList())
 			e->Reset(e->getInitPosition());
 		mCamera->SetPosition(0, 208);
 	}
 
-	switch (level)
+	switch (currentLevel)
 	{
 	case 1:
 	{
-		if (ninja->getX() > CHECKPOINT_1)
+		if (ninja->getX() +80> CHECKPOINT_1)
 		{
 			
 			SceneDemo* scene = new SceneDemo(2);
@@ -212,7 +222,7 @@ void SceneDemo::Update(float dt)
 	}
 	case 2:
 	{
-		if (ninja->getX() > CHECKPOINT_2)
+		if (ninja->getX() +80> CHECKPOINT_2)
 		{
 			SceneDemo* scene = new SceneDemo(3);
 			SceneManager::GetInstance()->ReplaceScene(scene);
@@ -375,11 +385,11 @@ void SceneDemo::UpdateWeapon(float dt)
 					{
 						bullet->setFlipVertical(true);
 						bullet->SetPosition(e->GetPosition().x - 10, e->GetPosition().y + 6);
-						bullet->SetVx(-40);
+						bullet->SetVx(-BULLET_BAZOOKA_SPEED);
 					}
 					else
 					{
-						bullet->SetVx(40);
+						bullet->SetVx(BULLET_BAZOOKA_SPEED);
 						bullet->setFlipVertical(false);
 						bullet->SetPosition(e->GetPosition().x + 10, e->GetPosition().y + 6);
 					}
@@ -403,13 +413,13 @@ void SceneDemo::UpdateWeapon(float dt)
 						{
 							bullet->setFlipVertical(true);
 							bullet->SetPosition(e->GetPosition().x - i * 3, e->GetPosition().y + i * 20 - 40);
-							bullet->SetVx(80);
+							bullet->SetVx(BULLET_BOSS_SPEED);
 						}
 						else
 						{
 							bullet->setFlipVertical(false);
 							bullet->SetPosition(e->GetPosition().x + i * 3, e->GetPosition().y + i * 20 - 40);
-							bullet->SetVx((-80));
+							bullet->SetVx((-BULLET_BOSS_SPEED));
 						}
 						lstWeaponEnemy.insert(bullet);
 					}

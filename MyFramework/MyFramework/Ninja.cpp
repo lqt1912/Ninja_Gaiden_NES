@@ -145,7 +145,6 @@ void Ninja::Update(float dt, vector<Object*> handleObject)
 				if (physical > 0)
 				{
 					physical -= NINJA_HITPOINT_PER_COLLIDED;
-					Game_UI::getInstance()->MinusNinjaHealth();
 				}
 				if (isOnWall)
 				{
@@ -209,19 +208,19 @@ void Ninja::Update(float dt, vector<Object*> handleObject)
 				switch (i->getTypeItem())
 				{
 				case Object::SpiritBlue:
-					AddSpirit(5);
+					AddSpirit(SPIRIT_BLUE);
 					break;
 				case Object::SpiritRed:
-					AddSpirit(10);
+					AddSpirit(SPIRIT_RED);
 					break;
 				case Object::BonusBlue:
-					AddScore(50);
+					AddScore(BONUS_BLUE);
 					break;
 				case Object::BonusRed:
-					AddScore(100);
+					AddScore(BONUS_RED);
 					break;
 				case Object::Physical:
-					AddPhysical(6);
+					AddPhysical(BONUS_PHYSICAL);
 					for (int i = 0; i < 6; i++)
 						Game_UI::getInstance()->PlusEnemyHealth();
 					break;
@@ -354,6 +353,7 @@ void Ninja::OnKeyPressed(int KeyCode)
 	}
 	else if (KeyCode == DIK_C)
 	{
+		Sound::getInstance()->play("ninja_attack", false, 1);
 		if (allowDart)
 		{
 			if (ninjaData->ninja->currentState == NinjaAnimations::Idling
@@ -361,9 +361,10 @@ void Ninja::OnKeyPressed(int KeyCode)
 				|| ninjaData->ninja->currentState == NinjaAnimations::eNinjaStates::Falling
 				|| ninjaData->ninja->currentState == NinjaAnimations::eNinjaStates::Running
 				||ninjaData->ninja->currentState == NinjaAnimations::eNinjaStates::Impacting)
+
 				ninjaData->ninja->SetState(new NinjaDartingState(this->ninjaData));
-			allowDart = false;
-			isDarting = true;
+				allowDart = false;
+				isDarting = true;
 		}
 	}
 	else if (KeyCode == DIK_X)
@@ -386,6 +387,7 @@ void Ninja::OnKeyPressed(int KeyCode)
 			if (ninjaData->ninja->currentState == NinjaAnimations::Sitting)
 			{
 				ninjaData->ninja->SetState(new NinjaAttackSittingState(this->ninjaData));
+				Sound::getInstance()->play("ninja_attack", false, 1);
 			}
 			allowSitAttack = false;
 		}
@@ -507,7 +509,11 @@ void Ninja::OnCollisionWithGroundA(vector<BoundingBox> grounds)
 	// neu khong thi roi 
 	else if (!this->vy && currentState != NinjaAnimations::Injuring)
 	{
-		y += 20;
+		y += 10;
+		if (mCurrentReverse)
+			vx = -NINJA_JUMP_VX;
+		else
+			vx = NINJA_JUMP_VX;
 		this->SetState(new NinjaFallingState(ninjaData));
 	
 		Game_UI::getInstance()->setLife(life);
