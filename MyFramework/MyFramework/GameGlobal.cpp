@@ -11,7 +11,7 @@ IDirect3DSurface9* GameGlobal::backSurface = nullptr;
 
 bool isFrozenEnemies = false;
 float frozenTime = FROZEN_TIME;
-
+bool isWin = false;
 GameGlobal::GameGlobal()
 {
 }

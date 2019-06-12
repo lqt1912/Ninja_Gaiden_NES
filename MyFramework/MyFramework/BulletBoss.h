@@ -6,6 +6,7 @@ class BulletBoss :
 public:
 	BulletBoss();
 	~BulletBoss();
+	BoundingBox GetBoundingBox();
 	void Update(float dt);
 };
 

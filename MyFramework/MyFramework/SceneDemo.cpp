@@ -17,7 +17,7 @@ SceneDemo::SceneDemo(int level)
 
 	//Ninja's instance call
 	ninja = Ninja::GetInstance();
-	ninja->SetPosition((D3DXVECTOR3(930, 200, 0)));
+	ninja->SetPosition((D3DXVECTOR3(100, 200, 0)));
 
 	grid = new Grid();
 	//Load map with level 
@@ -286,6 +286,8 @@ void SceneDemo::Draw()
 	//Endgame
 	if (ninja->life <= 0 || timer <=0)
 		GameOver->Draw(D3DXVECTOR3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0));
+	if (isWin)
+		GameWin->Draw(D3DXVECTOR3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0));
 
 
 }
@@ -412,13 +414,13 @@ void SceneDemo::UpdateWeapon(float dt)
 						if (obj->IsFlipVertical())
 						{
 							bullet->setFlipVertical(true);
-							bullet->SetPosition(e->GetPosition().x - i * 3, e->GetPosition().y + i * 20 - 40);
+							bullet->SetPosition(e->GetPosition().x - i * 3, e->GetPosition().y + i * 20 - 30);
 							bullet->SetVx(BULLET_BOSS_SPEED);
 						}
 						else
 						{
 							bullet->setFlipVertical(false);
-							bullet->SetPosition(e->GetPosition().x + i * 3, e->GetPosition().y + i * 20 - 40);
+							bullet->SetPosition(e->GetPosition().x + i * 3, e->GetPosition().y + i * 20 - 30);
 							bullet->SetVx((-BULLET_BOSS_SPEED));
 						}
 						lstWeaponEnemy.insert(bullet);
@@ -453,10 +455,11 @@ void SceneDemo::UpdateWeapon(float dt)
 			if (knife->flag)
 			{
 				for (auto e : lstColiableObject)
-					if (e->type == 11)
+					if (e->getType() == BROWN_BOSS_TYPE)
 					{
 						auto b = (BrownBoss*)e;
-						b->MinusBlood();
+						if(b->blood > 0)
+							b->MinusBlood();
 					}
 				knife->flag = false;
 			}

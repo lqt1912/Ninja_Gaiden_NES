@@ -15,7 +15,7 @@ public:
 	bool isAttacking;
 	bool isIdling;
 	int count;
-	float s = 1.6f;
+	float s = 1,s1 = 0;
 	BrownBoss();
 	~BrownBoss();
 	int getType()

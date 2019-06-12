@@ -29,6 +29,19 @@ BrownBoss::~BrownBoss()
 
 void BrownBoss::Update(float dt)
 {
+	if (blood < 1)
+	{
+		currentAni = destroyedAni;
+		currentAni->Update(dt);
+		Sound::getInstance()->play("Boss_Die", true, 0);
+		s1 += dt;
+		x -= vx * dt;
+		y -= vy * dt;
+		if (s1 > 2)
+			isWin = true;
+		return;
+	}
+
 	if (vx < 0)
 		setFlipVertical(true);
 	else if (vx > 0)
@@ -68,60 +81,32 @@ void BrownBoss::Update(float dt)
 			else
 				count += 1;
 			if (IsFlipVertical())
+			{
+				x -= 6;
 				vx = 120;
+			}
 			else
+			{
 				vx = -120;
+				x += 6;
+			}
 			vy = 220;
 			s = 1;
 			isIdling = false;
 		}
 	}
-	if (blood == 0)
-	{
-		if (currentAni)
-		{
-			if (currentAni == destroyedAni)
-			{
-				if (s < 10)
-				{
-					s += dt;
-				}
-				else
-				{
-					s = 0;
-					isActive = false;
-					Ninja::GetInstance()->AddScore(scored);
-					//SetPosition(D3DXVECTOR2(-100, -100));
-				}
-			}
-			dx = vx * dt;
-			dy = vy * dt;
+	
 
-			if (currentAni == destroyedAni)
-			{
-				
-				currentAni->Update(dt);
-			}
-			if (isFrozenEnemies == true)
-				return;
-
-			currentAni->Update(dt);
-			//Object::Update(dt);
-		}
-	}
-
-	if(blood <1)
-		Sound::getInstance()->play("Boss_Die", true, 0);
 }
 BoundingBox BrownBoss::GetBoundingBox()
 {
 	BoundingBox b;
 	b.vx = this->dx;
 	b.vy = this->dy;
-	b.w = this->width;
-	b.h = this->height;
-	b.x = this->x - this->width / 2;
-	b.y = this->y - this->height / 2;
+	b.w = this->width/2;
+	b.h = this->height/2;
+	b.x = this->x - this->width / 2 ;
+	b.y = this->y;
 	return b;
 }
 void BrownBoss::MinusBlood()

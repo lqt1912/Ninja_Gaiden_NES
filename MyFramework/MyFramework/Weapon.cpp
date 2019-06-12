@@ -52,18 +52,18 @@ void Weapon::Update(float dt, vector<Object*> handleObject, Grid* grid)
 		{
 			if (obj->getObjectType() == Object::eEnemy)
 			{
-				flag = true;
+				
 				if (obj->type == BROWN_BOSS_TYPE)
 				{
 					auto b = (BrownBoss*)obj;
-
-					if (b->blood == 1)
+					flag = true;
+					if (b->blood < 1)
 					{
 						b->changeState();
 						//Sound::getInstance()->play("Boss_Die", false, 10);
 					}
 				}
-				else if (obj->type != 11)
+				else if (obj->type != BROWN_BOSS_TYPE)
 				{
 					auto e = (Enemy*)obj;
 					e->changeState();
