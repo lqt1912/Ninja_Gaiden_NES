@@ -264,7 +264,6 @@ void Ninja::SetReverse(bool flag)
 
 void Ninja::Draw(D3DXVECTOR3 position, RECT sourceRect, D3DXVECTOR2 scale, D3DXVECTOR2 transform, float angle, D3DXVECTOR2 rotationCenter, D3DXCOLOR colorKey)
 {
-	DebugOut((wchar_t*)L"\nN %d, %d ", GetBound().top,GetBound().bottom);
 	
 	if (position == D3DXVECTOR3())
 	{
@@ -282,7 +281,6 @@ void Ninja::Draw(D3DXVECTOR3 position, RECT sourceRect, D3DXVECTOR2 scale, D3DXV
 		listAni->GetInstance()->mAni[currentState]->SetPosition(position);
 		listAni->GetInstance()->mAni[currentState]->Draw(position);
 	}
-	DebugOut((wchar_t*)L"\nAfter %d, %d ", GetBound().top, GetBound().bottom);
 }
 
 void Ninja::SetState(NinjaState * newState)

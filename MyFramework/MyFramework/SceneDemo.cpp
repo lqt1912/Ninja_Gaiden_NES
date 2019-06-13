@@ -287,8 +287,29 @@ void SceneDemo::Draw()
 
 
 	//Endgame
-	if (ninja->life <= 0 || timer <=0)
+	if (ninja->life <= 0 || timer <= 0)
+	{
+		timer = 300;
 		GameOver->Draw(D3DXVECTOR3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0));
+			switch (currentLevel)
+			{
+			case 1:
+			{
+				Sound::getInstance()->stop("Sound_3_1");
+				break;
+			}
+			case 2:
+			{
+				Sound::getInstance()->stop("Sound_3_2");
+				break;
+			}
+			case 3:
+			{
+				Sound::getInstance()->stop("Sound_3_3");
+				break;
+			}
+		}
+	}
 	if (isWin)
 		GameWin->Draw(D3DXVECTOR3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0));
 
@@ -298,6 +319,11 @@ void SceneDemo::OnKeyDown(int KeyCode)
 {
 	keys[KeyCode] = true;
 	ninja->OnKeyPressed(KeyCode);
+	if (KeyCode == DIK_F)
+	{
+		isFrozenEnemies = true;
+		frozenTime = 2000;
+	}
 }
 
 void SceneDemo::OnKeyUp(int KeyCode)
@@ -305,6 +331,7 @@ void SceneDemo::OnKeyUp(int KeyCode)
 
 	keys[KeyCode] = false;
 	ninja->OnKeyUp(KeyCode);
+
 }
 
 

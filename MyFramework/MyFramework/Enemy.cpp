@@ -69,7 +69,7 @@ void Enemy::Update(float dt)
 		dy = vy * dt;
 		if (currentAni == destroyedAni)
 		{
-			if (s < 0.2f)
+			if (s < 0.4f)
 			{
 				SetPosition(x - dx, y - dy);
 				s += dt;

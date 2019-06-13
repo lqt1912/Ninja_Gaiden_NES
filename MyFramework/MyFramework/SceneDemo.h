@@ -19,19 +19,16 @@
 #include "Bullet.h"
 using namespace std;
 
+
 class SceneDemo :
 	public Scene
 {
 public:
 
-
 	//Keyboard handling
 	void OnKeyDown(int KeyCode);
 	void OnKeyUp(int KeyCode);
 
-	void LoadMap();
-
-	
 	 bool isCollision(RECT rect1, RECT rect2);
 
 	 //Update
@@ -39,8 +36,6 @@ public:
 	 void UpdateWeapon(float dt);
 
 	 void Draw();
-
-	 void InitGrid();
 
 	 RECT BoxToRect(BoundingBox b)
 	 {
@@ -52,13 +47,10 @@ public:
 		 return r;
 	 }
 	 
-	 SceneDemo();
 	 SceneDemo(int level);
 	 ~SceneDemo();
 	 int currentLevel = 1;
 protected:
-
-	
 
 	//Scene's parameters
 	TiledMap* map;

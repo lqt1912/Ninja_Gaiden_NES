@@ -20,7 +20,7 @@
 
 //Ninja Health 
 #define MAX_NINJA_HEALTH 16
-#define MAX_NINJA_SOULS 4
+#define MAX_NINJA_SOULS 3
 #define NINJA_HITPOINT_PER_COLLIDED 1
 
 //Ninja run
