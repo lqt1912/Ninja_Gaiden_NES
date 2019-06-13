@@ -443,22 +443,28 @@ Grid::Grid()
 
 Grid::~Grid()
 {
-	for (auto e : lstEnemies)
-		e = nullptr;
-	lstEnemies.clear();
-	
-	for (int i = 0; i < number_of_rows; i++)
-	{
-		for (int j = 0; j<number_of_columns; i++)
-		{
-			listGridA[i][j]->listObject.clear();
-			delete listGridA[i][j];
-		}
-		delete listGridA[i];
-	}
+	/*for (auto e : lstEnemies)
+		e = NULL;
+	lstEnemies.clear();*/
+	//
+	//for (int i = 0; i < number_of_rows; i++)
+	//{
+	//	for (int j = 0; j<number_of_columns; i++)
+	//	{
+	//		for (auto obj : listGridA[i][j]->listObject)
+	//		{
+	//			obj = NULL;
+	//			delete obj;
+	//		}
+	//		listGridA[i][j]->listObject.clear();
+	//		listGridA[i][j] = NULL;
+	//		delete listGridA[i][j];
+	//	}
+	//	delete listGridA[i];
+	//}
 
-	number_of_rows = 0;
-	number_of_columns = 0;
+//	number_of_rows = 0;
+	//number_of_columns = 0;
 }
 
 int Grid::isCollision(RECT rect1, RECT rect2)

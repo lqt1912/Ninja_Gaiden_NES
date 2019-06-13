@@ -93,6 +93,12 @@ void TiledMap::Render()
 
 TiledMap::~TiledMap()
 {
+	for (auto tile : tiles)
+	{
+		tile = nullptr;
+		delete tile;
+	}
+	tiles.clear();
 }
 
 // lưu các id tương ứng vào ma trận

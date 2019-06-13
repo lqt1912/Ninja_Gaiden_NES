@@ -17,7 +17,7 @@ SceneDemo::SceneDemo(int level)
 
 	//Ninja's instance call
 	ninja = Ninja::GetInstance();
-	ninja->SetPosition((D3DXVECTOR3(930, 200, 0)));
+	ninja->SetPosition((D3DXVECTOR3(1900, 200, 0)));
 
 	grid = new Grid();
 	//Load map with level 
@@ -211,6 +211,9 @@ void SceneDemo::Update(float dt)
 	{
 		if (ninja->getX() +80> CHECKPOINT_1)
 		{
+		
+
+			delete map;
 			
 			SceneDemo* scene = new SceneDemo(2);
 			SceneManager::GetInstance()->ReplaceScene(scene);
