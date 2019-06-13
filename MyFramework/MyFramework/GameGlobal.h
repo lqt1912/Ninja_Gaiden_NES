@@ -108,7 +108,7 @@
 
 extern bool isFrozenEnemies;
 extern float frozenTime;
-
+extern bool isWin;
 class GameGlobal
 {
  public:

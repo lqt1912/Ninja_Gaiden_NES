@@ -3,9 +3,6 @@
 #include "Enemy.h"
 class SwordOfPink:public Enemy
 {
-	
-	
-	Object::WeaponTypes type;
 public:
 
 	SwordOfPink();

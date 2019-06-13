@@ -28,3 +28,14 @@ void BulletBoss::Update(float dt)
 	}
 
 }
+BoundingBox BulletBoss::GetBoundingBox()
+{
+	BoundingBox b;
+	b.x = this->x - this->width / 2;
+	b.y = this->y;
+	b.vx = this->dx;
+	b.vy = this->dy;
+	b.w = this->width;
+	b.h = this->height;
+	return b;
+}

@@ -5,7 +5,7 @@
 Knife::Knife()
 {
 	this->type = Object::eKnife;
-	this->SetWidth(24);
+	this->SetWidth(26);
 	this->SetHeight(16);
 	s = 0;
 	limitSpirit = 0;
