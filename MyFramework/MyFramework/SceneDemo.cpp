@@ -307,12 +307,16 @@ void SceneDemo::Draw()
 			case 3:
 			{
 				Sound::getInstance()->stop("Sound_3_3");
+				
 				break;
 			}
 		}
 	}
 	if (isWin)
+	{
 		GameWin->Draw(D3DXVECTOR3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0));
+		Sound::getInstance()->stop("Boss_Die");
+	}
 
 
 }
