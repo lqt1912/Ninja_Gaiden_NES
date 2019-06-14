@@ -40,7 +40,7 @@ Ninja::Ninja()
 	this->SetState(new NinjaFallingState(this->ninjaData));
 	Tag = Object::eNinja;
 	int physical = 16;
-	int spirit = 90;
+	int spirit = 10;
 	long score = 0;
 	int life = 3;
 }
@@ -100,7 +100,7 @@ void Ninja::Update(float dt, vector<Object*> handleObject)
 
 	if (currentState == NinjaAnimations::Injuring || currentState == NinjaAnimations::Impacting)
 		return;
-	if (noCollision < 0.6 && isInjuring)
+	if (noCollision <NO_COLLISION_TIME && isInjuring)
 	{
 		noCollision += dt;
 		return;
@@ -144,7 +144,7 @@ void Ninja::Update(float dt, vector<Object*> handleObject)
 				// neu va cham , ninja mat 1 mau 
 				if (physical > 0)
 				{
-					physical -= NINJA_HITPOINT_PER_COLLIDED;
+					physical -= e->damage;
 				}
 				if (isOnWall)
 				{
@@ -285,8 +285,6 @@ void Ninja::Draw(D3DXVECTOR3 position, RECT sourceRect, D3DXVECTOR2 scale, D3DXV
 
 void Ninja::SetState(NinjaState * newState)
 {
-	allowMoveLeft = true;
-	allowMoveRight = true;
 
 	delete this->ninjaData->ninjaState;
 

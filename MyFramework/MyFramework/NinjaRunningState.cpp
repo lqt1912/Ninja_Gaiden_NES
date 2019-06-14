@@ -6,9 +6,6 @@
 NinjaRunningState::NinjaRunningState(NinjaData *ninjaData)
 {
 	this->ninjaData = ninjaData;
-	this->ninjaData->ninja->allowMoveLeft = true;
-	this->ninjaData->ninja->allowMoveRight = true;
-	
 }
 
 void NinjaRunningState::Update(float dt)

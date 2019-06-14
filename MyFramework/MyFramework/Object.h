@@ -76,9 +76,9 @@ public:
 
 	virtual void moveTo(Object* des, int v);
 
-	virtual void moveTo(int, int);
+	virtual void moveTo(float,float);
 
-	virtual void moveTo(int x, int y, float v);
+	virtual void moveTo(float x, float y, float v);
 	virtual RECT GetBound();
 
 	virtual void Reset(D3DXVECTOR2 pos);
@@ -119,9 +119,9 @@ public:
 	virtual void Update(float dt);
 
 
-	virtual int getX();
+	virtual float getX();
 
-	virtual int getY();
+	virtual float getY();
 
 	virtual int getType();
 

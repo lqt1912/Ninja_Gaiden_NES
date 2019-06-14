@@ -11,6 +11,7 @@ Enemy::Enemy()
 	this->SetHeight(ENEMY_HEIGHT);
 	s = 0;
 	scored = 0;
+	damage = DEFAULT_DAMAGE;
 }
 
 
@@ -69,7 +70,7 @@ void Enemy::Update(float dt)
 		dy = vy * dt;
 		if (currentAni == destroyedAni)
 		{
-			if (s < 0.4f)
+			if (s < 0.2f)
 			{
 				SetPosition(x - dx, y - dy);
 				s += dt;
@@ -79,53 +80,16 @@ void Enemy::Update(float dt)
 				s = 0;
 				isActive = false;
 				Ninja::GetInstance()->AddScore(scored);
-				//SetPosition(D3DXVECTOR2(-100, -100));
 			}
-		}
-
-		if (currentAni == destroyedAni)
-		{
 			currentAni->Update(dt);
+			if(isFrozenEnemies)
+				SetPosition(x + dx, y + dy);
 		}
-		if (isFrozenEnemies == true)
-			return;
-
-		currentAni->Update(dt);
-		//Object::Update(dt);
+		
+		if (!isFrozenEnemies)
+			currentAni->Update(dt);			
 	}
 }
-//void Enemy::DetectGround(vector<Object*> listGround)
-//{
-//	BoundingBox b;
-//	for (auto g : listGround)
-//	{
-//		b = g->GetBoundingBox();
-//		b.h = b.h / 4;
-//		b.y -= 6;
-//		if (Collision::GetInstance()->CollisionAABB(this->GetBoundingBox(), b))
-//		{
-//			boundGround = g->GetBoundingBox();
-//			return;
-//		}
-//	}
-//}
-//
-//void Enemy::DetectGroundA(vector<BoundingBox> listGround)
-//{
-//	BoundingBox b;
-//	for (auto g : listGround)
-//	{
-//		b = g;
-//		b.h = b.h / 4;
-//		b.y -= 6;
-//		if (Collision::GetInstance()->CollisionAABB(this->GetBoundingBox(), b))
-//		{
-//			boundGround = g;
-//			return;
-//		}
-//	}
-//}
-
 bool Enemy::detectGroundA(vector<BoundingBox> grounds)
 {
 	return false;

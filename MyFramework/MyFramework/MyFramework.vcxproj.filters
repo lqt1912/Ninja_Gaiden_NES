@@ -147,9 +147,6 @@
     <ClInclude Include="NinjaData.h">
       <Filter>Framework\Objects\Ninja\NinjaState</Filter>
     </ClInclude>
-    <ClInclude Include="NinjaDyingState.h">
-      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
-    </ClInclude>
     <ClInclude Include="NinjaFallingState.h">
       <Filter>Framework\Objects\Ninja\NinjaState</Filter>
     </ClInclude>
@@ -231,9 +228,6 @@
     <ClInclude Include="Bird.h">
       <Filter>Framework\Objects\Holder</Filter>
     </ClInclude>
-    <ClInclude Include="BulletBazooka.h">
-      <Filter>Framework\Objects\Weapon\WeaponEnemy</Filter>
-    </ClInclude>
     <ClInclude Include="NinjaClimbingState.h">
       <Filter>Framework\Objects\Ninja\NinjaState</Filter>
     </ClInclude>
@@ -269,6 +263,9 @@
     </ClInclude>
     <ClInclude Include="WindmillStar.h">
       <Filter>Framework\Objects\Weapon\WeaponNinja</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletBazooka.h">
+      <Filter>Framework\Objects\Weapon\WeaponEnemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -351,9 +348,6 @@
       <Filter>Framework\Objects\Ninja\NinjaState</Filter>
     </ClCompile>
     <ClCompile Include="NinjaData.cpp">
-      <Filter>Framework\Objects\Ninja\NinjaState</Filter>
-    </ClCompile>
-    <ClCompile Include="NinjaDyingState.cpp">
       <Filter>Framework\Objects\Ninja\NinjaState</Filter>
     </ClCompile>
     <ClCompile Include="NinjaFallingState.cpp">

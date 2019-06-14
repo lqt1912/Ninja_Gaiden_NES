@@ -21,10 +21,7 @@ void Knife::Update(float dt)
 		this->y = Ninja::GetInstance()->GetPosition().y;
 	else 
 		this->y = Ninja::GetInstance()->GetPosition().y + 4;
-	//if (Ninja::GetInstance()->GetMoveDirection() == Ninja::MoveToRight)
-	//	this->x = Ninja::GetInstance()->GetPosition().x + 16;
-	//else
-	//	this->x = Ninja::GetInstance()->GetPosition().x - 16;
+
 	if(Ninja::GetInstance()->getFlip())
 		this->x = Ninja::GetInstance()->GetPosition().x - 20;
 	else

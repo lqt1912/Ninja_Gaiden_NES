@@ -22,7 +22,7 @@ Bird2::Bird2()
 	this->SetHeight(currentAni->GetHeight());
 	srand(time(NULL));
 	/*s = (float)( 1.0*(rand()%6 + 2 )/10);*/
-	s = 0.9;
+	s = 0.9f;
 	type = BIRD2_TYPE;
 	scored = SCORE_3;
 }
@@ -46,12 +46,12 @@ void Bird2::Update(float dt)
 	}
 	if (GetPosition().x == getInitPosition().x)
 	{
-		if (isFlip == false && Ninja::GetInstance()->GetPosition().x - getInitPosition().x >= DISTANCE_APPEAR)
+		if (isFlip == false && Ninja::GetInstance()->GetPosition().x - getInitPosition().x >= DISTANCE_APPEAR - 20)
 		{
 			setActive(true);
 			x += 10;
 		}
-		else if (isFlip == true && -Ninja::GetInstance()->GetPosition().x + getInitPosition().x >= DISTANCE_APPEAR)
+		else if (isFlip == true && -Ninja::GetInstance()->GetPosition().x + getInitPosition().x >= DISTANCE_APPEAR -20)
 		{
 			setActive(true);
 			x -= 10;

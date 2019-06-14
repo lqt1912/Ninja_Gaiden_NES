@@ -10,8 +10,6 @@ NinjaIdlingState::NinjaIdlingState(NinjaData *ninjaData)
 	ninjaData->ninja->SetVx(0);
 	ninjaData->ninja->SetVy(0);
 	this->ninjaData = ninjaData;
-	this->ninjaData->ninja->allowMoveLeft = true;
-	this->ninjaData->ninja->allowMoveRight = true;
 	this->ninjaData->ninja->allowAttack = true;
 	this->ninjaData->ninja->allowDart = true;
 	this->ninjaData->ninja->allowJump = true;

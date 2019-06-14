@@ -169,7 +169,6 @@
     <ClInclude Include="NinjaClingingState.h" />
     <ClInclude Include="NinjaDartingState.h" />
     <ClInclude Include="NinjaData.h" />
-    <ClInclude Include="NinjaDyingState.h" />
     <ClInclude Include="NinjaFallingState.h" />
     <ClInclude Include="NinjaIdlingState.h" />
     <ClInclude Include="NinjaImpactingState.h" />
@@ -240,7 +239,6 @@
     <ClCompile Include="NinjaClingingState.cpp" />
     <ClCompile Include="NinjaDartingState.cpp" />
     <ClCompile Include="NinjaData.cpp" />
-    <ClCompile Include="NinjaDyingState.cpp" />
     <ClCompile Include="NinjaFallingState.cpp" />
     <ClCompile Include="NinjaIdlingState.cpp" />
     <ClCompile Include="NinjaImpactingState.cpp" />

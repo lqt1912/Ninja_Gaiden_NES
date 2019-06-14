@@ -6,6 +6,7 @@ NinjaClingingState::NinjaClingingState(NinjaData *ninjaData)
 {
 	this->ninjaData = ninjaData;
 	this->ninjaData->ninja->allowAttack = false;
+	this->ninjaData->ninja->allowDart = false;
 	this->ninjaData->ninja->isClimbing = true;
 	this->ninjaData->ninja->allowJump = true;
 

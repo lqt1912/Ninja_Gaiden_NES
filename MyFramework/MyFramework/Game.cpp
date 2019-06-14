@@ -7,7 +7,7 @@
 Game::Game(int fps)
 {
 	this->fps = fps;
-	SceneManager::GetInstance()->ReplaceScene(new SceneDemo(1));
+	SceneManager::GetInstance()->ReplaceScene(new SceneDemo(2));
 	InitKeyboard();
 	InitLoop();
 }

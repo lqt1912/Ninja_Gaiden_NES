@@ -91,8 +91,7 @@ public:
 	bool isOnGround;
 	bool isOnWall = false;
 	float noCollision = 0;
-	bool allowMoveLeft;
-	bool allowMoveRight;
+
 
 	Object::WeaponTypes specialWeapon = Object::NoneWeapon;
 	NinjaData* ninjaData;
@@ -100,7 +99,7 @@ public:
 	BoundingBox curGround;
 
 	float limitUp, limitDown;
-	int spirit = 90;
+	int spirit = 10;
 	long score;
 	int life = MAX_NINJA_SOULS;
 	int physical =16;
@@ -111,10 +110,6 @@ protected:
 	void ChangeAnimation(NinjaAnimations::eNinjaStates state);
 
 private:
-	// thuoc tinh cua ninja 
-
-	
-
 
 	Ninja();
 	static Ninja* instance;

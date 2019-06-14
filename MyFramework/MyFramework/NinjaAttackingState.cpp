@@ -21,14 +21,6 @@ NinjaAttackingState::~NinjaAttackingState()
 
 void NinjaAttackingState::Update(float dt)
 {
-	//if (ninjaData->ninja->getY() >50.0f)
-	//{
-	//	ninjaData->ninja->SetVy(-80.0f);
-	//}
-	//else if (ninjaData->ninja->getY() < 50)
-	//{
-	//	ninjaData->ninja->SetState(new NinjaIdlingState(ninjaData));
-	//}
 
 	
 	if (s1  > Ninja::GetInstance()->listAni->GetInstance()->mAni[NinjaAnimations::Attacking]->mTotalFrame * 

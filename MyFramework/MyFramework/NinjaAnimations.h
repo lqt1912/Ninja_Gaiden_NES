@@ -18,7 +18,6 @@ public:
 		Attack_Sitting,
 		Darting,
 		Injuring,
-		Dying,
 		Impacting,
 		Climbing,
 		Clinging,

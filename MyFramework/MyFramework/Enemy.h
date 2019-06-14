@@ -19,7 +19,7 @@ public:
 	virtual	BoundingBox GetBoundingBox();
 	bool isDead;
 	int scored;
-
+	int damage;
 protected:
 	Animation* currentAni, * moveAni, * destroyedAni;
 	float s;

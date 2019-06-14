@@ -49,7 +49,10 @@ void EnemyGreenWalk::Update(float dt)
 			setActive(false);
 		x += 1;
 	}
-
+	if (!Collision::GetInstance()->isCollision(Camera::getInstance()->GetBound(), this->GetBound()))
+	{
+		Reset(getInitPosition());
+	}
 	Enemy::Update(dt);
 
 }
@@ -99,7 +102,6 @@ void EnemyGreenWalk::OnCollisionWithGroundA(vector<BoundingBox> grounds)
 		{
 			if (result.side == Object::Right)
 			{
-				//	MessageBox(NULL, L"Right", L"", 1);
 				this->x += 4;
 				this->y += 32;
 

@@ -11,7 +11,7 @@ BulletBazooka::BulletBazooka()
 	SetWidth(BULLET_WIDTH);
 	setActive(true);
 	SetVy(0);
-	
+	damage = BAZOOKA_BULLET_DAMAGE;
 }
 
 

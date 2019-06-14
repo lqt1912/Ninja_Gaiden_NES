@@ -6,11 +6,10 @@
 NinjaFallingState::NinjaFallingState(NinjaData * ninjaData)
 {
 	this->ninjaData = ninjaData;
-	this->ninjaData->ninja->SetVy(-40);
+	this->ninjaData->ninja->SetVy(-80);
 
 	acceleratorY = NINJA_ACE_Y;
 	acceleratorX = NINJA_ACE_X;
-
 	noPressed = false;
 }
 
@@ -29,31 +28,6 @@ void NinjaFallingState::Update(float dt)
 	else
 		this->ninjaData->ninja->AddVy(-acceleratorY);
 
-	//if (noPressed)
-	//{
-	//	if (ninjaData->ninja->GetMoveDirection() == Ninja::MoveToLeft)
-	//	{
-	//		//player dang di chuyen sang ben trai      
-	//		if (ninjaData->ninja->GetVx() < 0)
-	//		{
-	//			this->ninjaData->ninja->AddVx(acceleratorX);
-
-	//			if (ninjaData->ninja->GetVx() > 0)
-	//				this->ninjaData->ninja->SetVx(0);
-	//		}
-	//	}
-	//	else if ((ninjaData->ninja->GetMoveDirection() == Ninja::MoveToRight))
-	//	{
-	//		//player dang di chuyen sang phai   
-	//		if (ninjaData->ninja->GetVx() > 0)
-	//		{
-	//			this->ninjaData->ninja->AddVx(-acceleratorX);
-
-	//			if (ninjaData->ninja->GetVx() < 0)
-	//				this->ninjaData->ninja->SetVx(0);
-	//		}
-	//	}
-	//}
 }
 
 void NinjaFallingState::HandleKeyboard(map<int, bool> keys)

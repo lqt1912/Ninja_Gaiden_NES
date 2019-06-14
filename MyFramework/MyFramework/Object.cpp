@@ -5,7 +5,6 @@ Camera* Object::camera = NULL;
 
 Object::Object()
 {
-	
 	Tag = None;
 	vy = 0;
 }
@@ -26,7 +25,7 @@ void Object::moveTo(Object* des)
 	this->SetVx(-dxx);
 	this->SetVy(-dyy);
 }
-void Object::moveTo(int x, int y)
+void Object::moveTo(float x, float y)
 {
 	float dxx = this->getX() - x;
 	float dyy = this->getY() - y;
@@ -35,7 +34,7 @@ void Object::moveTo(int x, int y)
 	this->SetVx(-dxx);
 	this->SetVy(-dyy);
 }
-void Object::moveTo(int x, int y, float v)
+void Object::moveTo(float x, float y, float v)
 {
 	float dxx = this->getX() - x;
 	float dyy = this->getY() - y;
@@ -247,11 +246,11 @@ void Object::Respawn()
 	isDead = false;
 	this->Reset(this->getInitPosition());
 }
-int Object::getX() {
+float Object::getX() {
 	return x;
 }
 
-int Object::getY()
+float Object::getY()
 {
 	return y;
 }

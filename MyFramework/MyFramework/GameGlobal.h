@@ -18,6 +18,7 @@
 
 //==== NINJA PARAMETER====
 
+#define NO_COLLISION_TIME 0.6f
 //Ninja Health 
 #define MAX_NINJA_HEALTH 16
 #define MAX_NINJA_SOULS 3
@@ -105,6 +106,9 @@
 
 #define BULLET_BAZOOKA_SPEED 80
 #define BULLET_BOSS_SPEED 80
+
+#define DEFAULT_DAMAGE 1
+#define BAZOOKA_BULLET_DAMAGE 2
 
 extern bool isFrozenEnemies;
 extern float frozenTime;
