@@ -226,6 +226,7 @@ void Ninja::Update(float dt, vector<Object*> handleObject)
 					break;
 				case Object::TimeFreeze:
 					isFrozenEnemies = true;
+					frozenTime = FROZEN_TIME;
 					break;
 				case Object::Star:
 					Game_UI::getInstance()->setItem(i->ani);

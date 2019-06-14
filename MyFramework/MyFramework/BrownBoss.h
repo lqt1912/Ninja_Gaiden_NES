@@ -11,7 +11,6 @@ public:
 	void Update(float dt);
 	BoundingBox GetBoundingBox();
 	void MinusBlood();
-
 	bool isAttacking;
 	bool isIdling;
 	int count;

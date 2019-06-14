@@ -17,6 +17,8 @@ BrownBoss::BrownBoss()
 	blood = 16;
 	type = BROWN_BOSS_TYPE;
 	scored =SCORE_3;
+	damage = 2;
+	isFlip = false;
 }
 
 
@@ -29,6 +31,8 @@ BrownBoss::~BrownBoss()
 
 void BrownBoss::Update(float dt)
 {
+
+
 	if (blood < 1)
 	{
 		currentAni = destroyedAni;
@@ -41,7 +45,7 @@ void BrownBoss::Update(float dt)
 			isWin = true;
 		return;
 	}
-
+	
 	if (vx < 0)
 		setFlipVertical(true);
 	else if (vx > 0)

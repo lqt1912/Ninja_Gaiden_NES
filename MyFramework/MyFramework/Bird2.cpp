@@ -46,15 +46,15 @@ void Bird2::Update(float dt)
 	}
 	if (GetPosition().x == getInitPosition().x)
 	{
-		if (isFlip == false && Ninja::GetInstance()->GetPosition().x - getInitPosition().x >= DISTANCE_APPEAR - 20)
+		if (isFlip == false && Ninja::GetInstance()->GetPosition().x - getInitPosition().x >= DISTANCE_APPEAR - 10)
 		{
 			setActive(true);
-			x += 10;
+			x += 15;
 		}
-		else if (isFlip == true && -Ninja::GetInstance()->GetPosition().x + getInitPosition().x >= DISTANCE_APPEAR -20)
+		else if (isFlip == true && -Ninja::GetInstance()->GetPosition().x + getInitPosition().x >= DISTANCE_APPEAR -10)
 		{
 			setActive(true);
-			x -= 10;
+			x -= 15;
 		}
 		else
 			setActive(false);

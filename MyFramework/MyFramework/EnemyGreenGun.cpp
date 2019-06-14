@@ -33,43 +33,43 @@ void EnemyGreenGun::Update(float dt)
 	{
 		if (x > lastPositionX + 100)
 			return;
-
-		if (Ninja::GetInstance()->GetPosition().x - x < 0)
-		{
-			setFlipVertical(true);
-			vx = -GREENGUN_SPEED;
-		}
-		else
-		{
-			setFlipVertical(false);
-			vx = GREENGUN_SPEED;
-		}
-
-		if (currentAni == moveAni)
-		{
-			if (s > 1.6)
+		if (!isFrozenEnemies)
+			if (Ninja::GetInstance()->GetPosition().x - x < 0)
 			{
-				isAttacking = true;
-				currentAni = attackAni;
-				s = 0;
+				setFlipVertical(true);
+				vx = -GREENGUN_SPEED;
 			}
 			else
 			{
-				s += dt;
+				setFlipVertical(false);
+				vx = GREENGUN_SPEED;
 			}
-		}
-		else if (currentAni == attackAni)
-		{
-			if (s > 0.6)
+		if (!isFrozenEnemies)
+			if (currentAni == moveAni)
 			{
-				currentAni = moveAni;
-				s = 0;
+				if (s > 1.6)
+				{
+					isAttacking = true;
+					currentAni = attackAni;
+					s = 0;
+				}
+				else
+				{
+					s += dt;
+				}
 			}
-			else
+			else if (currentAni == attackAni)
 			{
-				s += dt;
+				if (s > 0.6)
+				{
+					currentAni = moveAni;
+					s = 0;
+				}
+				else
+				{
+					s += dt;
+				}
 			}
-		}
 		Enemy::Update(dt);
 	}
 	else

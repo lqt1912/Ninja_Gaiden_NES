@@ -19,15 +19,15 @@ EnemyGreenBazooka::~EnemyGreenBazooka()
 }
 void EnemyGreenBazooka::Update(float dt)
 {
-
-	if (Ninja::GetInstance()->GetPosition().x - x < 0)
-	{
-		setFlipVertical(true);
-	}
-	else
-	{
-		setFlipVertical(false);
-	}
+	if (!isFrozenEnemies)
+		if (Ninja::GetInstance()->GetPosition().x - x < 0)
+		{
+			setFlipVertical(true);
+		}
+		else
+		{
+			setFlipVertical(false);
+		}
 
 	if (currentAni == moveAni)
 	{

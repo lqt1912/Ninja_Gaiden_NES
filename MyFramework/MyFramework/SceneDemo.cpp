@@ -178,10 +178,10 @@ void SceneDemo::Update(float dt)
 		ninja->setX(map->getWidth());
 
 	//Grid update
-	if (ninja->GetPosition().y < 10)
+	if (ninja->physical <= 0 || ninja->GetPosition().y < 10)
 	{
-		//if (isFrozenEnemies == true)
-		//	isFrozenEnemies = false;
+		if (isFrozenEnemies == true)
+			isFrozenEnemies = false;
 		grid->ResetGrid();
 	}
 	else 
@@ -195,7 +195,7 @@ void SceneDemo::Update(float dt)
 	gui->setLife(ninja->life);
 
 	//Reset khi Physical còn 0, trừ 1 life, physical tăng lại 16
-	if (ninja->physical <= 0 || ninja->GetPosition().y < 20)
+	if (ninja->physical <= 0 || ninja->GetPosition().y < 10)
 	{
 		isFrozenEnemies = false;
 		ninja->physical = 16;

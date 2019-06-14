@@ -108,6 +108,11 @@ void Object::Reset(D3DXVECTOR2 pos)
 	
 	SetPosition(pos);
 	setFlipVertical(getInitFlip());
+	if (this->getType() == BROWN_BOSS_TYPE)
+	{
+		SetVx(-120);
+		SetVy(220);
+	}
 	if (Ninja::GetInstance()->GetPosition().x - this->GetPosition().x >= 0 && this->getType()==4)
 	{
 		vx = 20;
